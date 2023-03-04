@@ -1,6 +1,7 @@
 export default function DashboardRoomCards() {
     return (
-      <div className="block w-96 p-6 lg:w-72 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <div className="flex justify-center p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div className="grow">
         <div className="flex justify-center items-center">
           <div className="mb-1 text-xl font-medium text-purple-700 dark:text-purple-500">
             Room 1 (F-205)
@@ -42,9 +43,22 @@ export default function DashboardRoomCards() {
   
   
           <div className="mb-1 text-base font-medium text-purple-700 dark:text-purple-500">
-            Time Left in Room 
+            Time taken to complete room 
           </div>
         </div>
+
+<div className="flex justify-center pt-6">
+<button
+  type="button"
+  className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+>
+  Begin!
+</button>
+</div>
+        
+        </div>
+       
+
   
   
       </div>
