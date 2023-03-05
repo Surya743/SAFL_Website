@@ -14,6 +14,9 @@ import {
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/router";
+
 
 const products = [
   {
@@ -58,6 +61,9 @@ function classNames(...classes) {
 
 export default function DashboardNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const {logout} = useAuth()
+  const router = useRouter();
+
 
   return (
     <header className="bg-violet-200">
@@ -97,9 +103,13 @@ export default function DashboardNavbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <button onClick={() => {
+            logout();
+            router.push("/login")
+
+            }} className="text-sm font-semibold leading-6 text-gray-900">
             Log Out <span aria-hidden="true">&rarr;</span>
-          </a>
+          </button>
         </div>
       </nav>
       <Dialog

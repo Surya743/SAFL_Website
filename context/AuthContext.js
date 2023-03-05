@@ -17,12 +17,12 @@ export function AuthProvider({children}){
     const userInfo = useRef();
 
     function signup(email,password){
-        createUserWithEmailAndPassword(auth,email,password);
-        return
+        return createUserWithEmailAndPassword(auth,email,password);
+        
     }
 
     function login(email,password){
-        signInWithEmailAndPassword(auth,email,password);
+        return signInWithEmailAndPassword(auth,email,password);
     }
 
     function logout(){

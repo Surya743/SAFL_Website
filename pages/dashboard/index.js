@@ -8,7 +8,9 @@ import { useAuth } from "@/context/AuthContext";
 export default function DashboardHome() {
 
   const {currentUser} = useAuth();
-  
+
+
+
   if(currentUser){
     return (
     
@@ -49,10 +51,7 @@ export default function DashboardHome() {
           <DashboardRoomCards/>    
           <DashboardRoomCards/>    
           <DashboardRoomCards/>    
-          <DashboardRoomCards/>    
-              
-  
-              
+          <DashboardRoomCards/>  
           </div>
           </div>
           
