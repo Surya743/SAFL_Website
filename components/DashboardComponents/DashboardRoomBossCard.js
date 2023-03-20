@@ -2,7 +2,7 @@ export default function DashboardRoomBossCard() {
   return (
     <div className="block w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
       <div className="flex justify-center items-center">
-        <div className="mb-1 text-xl font-medium text-purple-700">
+        <div className="mb-1 text-xl font-medium text-purple-800">
           Main Boss
         </div>
       </div>
@@ -23,7 +23,7 @@ export default function DashboardRoomBossCard() {
           />
         </svg>
 
-        <div className="mb-1 text-base font-medium text-purple-700">Rank</div>
+        <div className="mb-1 text-base font-medium text-purple-800">Rank</div>
       </div>
 
       <div className="flex gap-2 mt-8">
@@ -42,7 +42,7 @@ export default function DashboardRoomBossCard() {
           />
         </svg>
 
-        <div className="mb-1 text-base font-medium text-purple-700">
+        <div className="mb-1 text-base font-medium text-purple-800">
           Total Points
         </div>
       </div>

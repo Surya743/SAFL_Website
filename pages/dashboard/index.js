@@ -27,10 +27,6 @@ export default function DashboardRoom() {
               </p>
             </div>
           </div>
-          {/* <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-                Boss
-                
-              </h1> */}
           <div className="flex justify-center items-center pt-8 mx-4">
             <DashboardStatusCard />
           </div>

@@ -1,21 +1,21 @@
 import Link from "next/link";
 
 export default function DashboardRoomCards(props) {
-  console.log(props);
+  // console.log(props);
   const urlParams = new URLSearchParams({ room: props.room }).toString();
-  console.log(urlParams);
+  // console.log(urlParams);
   const room = "/dashboard/room?" + urlParams;
   return (
-    <div className="flex justify-center p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div className="flex justify-center p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
       <div className="grow">
         <div className="flex justify-center items-center">
-          <div className="mb-1 text-xl font-medium text-purple-700 dark:text-purple-500">
+          <div className="mb-1 text-xl font-medium text-purple-800">
             Room {props.number} ({props.room});
           </div>
         </div>
-        <div className="w-full mt-4 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+        <div className="w-full mt-4 bg-gray-200 rounded-full h-2.5">
           <div
-            className="bg-purple-600 h-2.5 rounded-full dark:bg-purple-500"
+            className="bg-purple-600 h-2.5 rounded-full"
             style={{ width: "45%" }}
           />
         </div>
@@ -36,8 +36,8 @@ export default function DashboardRoomCards(props) {
             />
           </svg>
 
-          <div className="mb-1 text-base font-medium text-purple-700 dark:text-purple-500">
-            Room Points Achieved
+          <div className="mb-1 text-base font-medium text-purple-800">
+            Room Points Achieved:
           </div>
         </div>
 
@@ -57,8 +57,8 @@ export default function DashboardRoomCards(props) {
             />
           </svg>
 
-          <div className="mb-1 text-base font-medium text-purple-700 dark:text-purple-500">
-            Time taken to complete room
+          <div className="mb-1 text-base font-medium text-purple-800">
+            Time taken to complete room:
           </div>
         </div>
 
@@ -69,7 +69,7 @@ export default function DashboardRoomCards(props) {
             //   query: { room: props.room },
             // }}
             href={room}
-            className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
             Begin!
           </a>
