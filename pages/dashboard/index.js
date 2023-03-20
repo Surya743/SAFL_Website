@@ -5,7 +5,7 @@ import DashboardStatusCard from "@/components/DashboardComponents/DashboardStatu
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
 import { useAuth } from "@/context/AuthContext";
 
-export default function DashboardHome() {
+export default function DashboardRoom() {
 
   const {currentUser} = useAuth();
 
@@ -19,11 +19,11 @@ export default function DashboardHome() {
           <DashboardNavbar />
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <div>
-              <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
                 Welcome Player to
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-500">
                   {" "}
-                  Around the World!
+                  Room1 Country!
                 </span>
               </h1>
               <p className="text-lg font-normal text-gray-500 lg:text-xl">
@@ -31,6 +31,10 @@ export default function DashboardHome() {
               </p>
             </div>
           </div>
+          {/* <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+                Boss
+                
+              </h1> */}
           <div className="flex justify-center items-center pt-8 mx-4">
             <DashboardStatusCard />
           </div>
@@ -38,7 +42,7 @@ export default function DashboardHome() {
   
           <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
             
-          <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+          <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
                 Tasks
                 
               </h1>
