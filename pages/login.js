@@ -55,44 +55,55 @@ export default function Login() {
     }
 
     async function handleRegister(data){
-        if(data.password === data.confirm_password){
-            try{
-                setLoading(true)
+      if(data.password && data.teamName && data.mobileNumber && data.confirmPassword && data.teamLeaderName && data.email){
+        console.log(data.password,data.confirmPassword)
+        if(data.password === data.confirmPassword){
+          try{
+              setLoading(true)
 
-               const resp =  await signup(data.email,data.password)
-               if(resp){
-                router.push("/dashboard")
-               }
-    
-            }
-            catch(error){
-                setLoading(false)
-                if(error.message == "Firebase: Error (auth/email-already-in-use)."){
-                    setErrorMessage("Account already exists please login!")
-                    setError(true)
-                    setTimeout(() => {
-                        setError(false);
-                        }, 5000);
-                }
-                else if(error.message == "Firebase: Password should be at least 6 characters (auth/weak-password)."){
-                  setErrorMessage("Password should be at least 6 characters")
-                    setError(true)
-                    setTimeout(() => {
-                        setError(false);
-                        }, 5000);
-                }
-                console.log(error.message)
-            }
-        }
-        
-       else{
-        setErrorMessage("Password and confirm password do not match!")
-        setError(true)
-        setTimeout(() => {
-            setError(false);
-            }, 5000);
-       }
-    }
+             const resp =  await signup(data.email,data.password,data.mobileNumber,data.teamName,data.teamLeaderName)
+             if(resp){
+              router.push("/dashboard")
+             }
+  
+          }
+          catch(error){
+              setLoading(false)
+              if(error.message == "Firebase: Error (auth/email-already-in-use)."){
+                  setErrorMessage("Account already exists please login!")
+                  setError(true)
+                  setTimeout(() => {
+                      setError(false);
+                      }, 5000);
+              }
+              else if(error.message == "Firebase: Password should be at least 6 characters (auth/weak-password)."){
+                setErrorMessage("Password should be at least 6 characters")
+                  setError(true)
+                  setTimeout(() => {
+                      setError(false);
+                      }, 5000);
+              }
+              console.log(error.message)
+          }
+      }
+      
+     else{
+      setErrorMessage("Password and confirm password do not match!")
+      setError(true)
+      setTimeout(() => {
+          setError(false);
+          }, 5000);
+     }
+  }
+  else{
+    setErrorMessage("All fields were not filled!")
+      setError(true)
+      setTimeout(() => {
+          setError(false);
+          }, 5000);
+  }
+      }
+       
 
 
 
@@ -233,9 +244,58 @@ export default function Login() {
   
                 <div className="mt-6">
                   <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
+                  <div>
+                      <label htmlFor="teamName" className="block text-sm font-medium text-violet-700">
+                        Team Name*
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="teamName"
+                          name="teamName"
+                          type="text"
+                          required
+                          {...register('teamName')}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="teamLeaderName" className="block text-sm font-medium text-violet-700">
+                        Team Leader Name*
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="teamLeaderName"
+                          name="teamLeaderName"
+                          type="text"
+                          required
+                          {...register('teamLeaderName')}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="mobileNumber" className="block text-sm font-medium text-violet-700">
+                        Mobile Number
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="mobileNumber"
+                          name="mobileNumber"
+                          type="tel"
+                          required
+                          {...register('mobileNumber')}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-violet-700">
-                        Email address
+                        Email address*
                       </label>
                       <div className="mt-1">
                         <input
@@ -252,7 +312,7 @@ export default function Login() {
   
                     <div className="space-y-1">
                       <label htmlFor="password" className="block text-sm font-medium text-violet-700">
-                        Password
+                        Password*
                       </label>
                       <div className="mt-1">
                         <input
@@ -269,7 +329,7 @@ export default function Login() {
 
                     <div className="space-y-1">
                       <label htmlFor="confirm_password" className="block text-sm font-medium text-violet-700">
-                        Confirm Password
+                        Confirm Password*
                       </label>
                       <div className="mt-1">
                         <input
@@ -278,7 +338,7 @@ export default function Login() {
                           type="password"
                           autoComplete="current-password"
                           required
-                          {...register('confirm_password')}
+                          {...register('confirmPassword')}
                           className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
                         />
                       </div>
