@@ -2,6 +2,7 @@ import DashboardFooter from "@/components/DashboardComponents/DashboardFooter";
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
 import DashboardRoomQuestCard from "@/components/DashboardComponents/DashboardRoomQuestCard";
 import DashboardRoomBossCard from "@/components/DashboardComponents/DashboardRoomBossCard";
+import DashboardStatusCard from "@/components/DashboardComponents/DashboardStatusCard";
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
 import { useRouter } from "next/router";
 import { useAuth } from "@/context/AuthContext";
@@ -42,16 +43,20 @@ export default function DashboardRoom() {
               </p>
             </div>
           </div>
-          {/* <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
-                Boss
-                
-              </h1> */}
           <div className="flex justify-center items-center pt-8 mx-4">
+            <DashboardStatusCard />
+          </div>
+          <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
+            <h1 className="text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Main Boss
+            </h1>
+          </div>
+          <div className="flex justify-center items-center pt-0 mx-4">
             <DashboardRoomBossCard />
           </div>
 
           <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
-            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+            <h1 className="mb-2 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
               Tasks
             </h1>
           </div>

@@ -37,7 +37,7 @@ export default function DashboardRoom() {
 
           <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
             <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
-              Tasks
+              Rooms
             </h1>
           </div>
           <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
