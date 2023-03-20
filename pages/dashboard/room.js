@@ -1,7 +1,7 @@
 import DashboardFooter from "@/components/DashboardComponents/DashboardFooter";
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
 import DashboardRoomCards from "@/components/DashboardComponents/DashboardRoomCards";
-import DashboardStatusCard from "@/components/DashboardComponents/DashboardStatusCard";
+import DashboardRoomBossCard from "@/components/DashboardComponents/DashboardRoomBossCard";
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
 import { useAuth } from "@/context/AuthContext";
 
@@ -32,7 +32,7 @@ export default function DashboardRoom() {
                 
               </h1> */}
           <div className="flex justify-center items-center pt-8 mx-4">
-            <DashboardStatusCard />
+            <DashboardRoomBossCard />
           </div>
 
           <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
