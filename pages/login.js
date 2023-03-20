@@ -58,8 +58,7 @@ export default function Login() {
         if(data.password === data.confirm_password){
             try{
                 setLoading(true)
-
-               const resp =  await signup(data.email,data.password)
+               const resp =  await signup(data.email,data.password,data.teamName,data.teamLeaderName,data.mobileNumber)
                if(resp){
                 router.push("/dashboard")
                }
@@ -233,6 +232,54 @@ export default function Login() {
   
                 <div className="mt-6">
                   <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
+                  <div>
+                      <label htmlFor="teamName" className="block text-sm font-medium text-violet-700">
+                        Team Name*
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="teamName"
+                          name="teamName"
+                          type="text"
+                          required
+                          {...register('teamName')}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="teamLeaderName" className="block text-sm font-medium text-violet-700">
+                        Team Leader Name*
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="teamLeaderName"
+                          name="teamLeaderName"
+                          type="text"
+                          required
+                          {...register('teamLeaderName')}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="mobileNumber" className="block text-sm font-medium text-violet-700">
+                        Mobile Number
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="mobileNumber"
+                          name="mobileNumber"
+                          type="tel"
+                          required
+                          {...register('mobileNumber')}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+                    
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-violet-700">
                         Email address

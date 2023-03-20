@@ -2,7 +2,7 @@ import React,{useContext,useState,useEffect,useRef} from "react";
 
 import {auth,db} from '../firebase'
 import { signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut,onAuthStateChanged } from "firebase/auth";
-import {doc,getDoc} from 'firebase/firestore'
+import {doc,getDoc,setDoc} from 'firebase/firestore'
 
 
 const AuthContext = React.createContext();
@@ -16,13 +16,34 @@ export function AuthProvider({children}){
     const [loading,setLoading] = useState(true);
     const userInfo = useRef();
 
-    function signup(email,password){
-        return createUserWithEmailAndPassword(auth,email,password);
+    function signup(email,password,teamName,teamLeaderName,mobileNumber){
+        return createUserWithEmailAndPassword(auth,email,password).then(async cred => {
+            try{
+                await setDoc(doc(db, "users", cred.user.uid), {
+                    email : email,
+                    teamName : teamName,
+                    teamLeaderName : teamLeaderName,
+                    mobileNumber : mobileNumber
+                  });
+            }
+            catch(error){
+                console.log(error)
+            }
+
+            return cred
+        });
         
     }
 
-    function login(email,password){
-        return signInWithEmailAndPassword(auth,email,password);
+    async function login(email,password){
+        
+          return signInWithEmailAndPassword(auth,email,password).then(async cred => {
+           
+            return cred
+            
+          }
+           
+          )
     }
 
     function logout(){
