@@ -19,14 +19,14 @@ export default function DashboardHome() {
           <DashboardNavbar />
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <div>
-              <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+              <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
                 Welcome Player to
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-500">
                   {" "}
                   Around the World!
                 </span>
               </h1>
-              <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
+              <p className="text-lg font-normal text-gray-500 lg:text-xl">
                 Complete our tasks to win the grand prize{" "}
               </p>
             </div>
@@ -38,7 +38,7 @@ export default function DashboardHome() {
   
           <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
             
-          <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+          <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
                 Tasks
                 
               </h1>
