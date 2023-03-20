@@ -1,14 +1,29 @@
 import DashboardFooter from "@/components/DashboardComponents/DashboardFooter";
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
-import DashboardRoomCards from "@/components/DashboardComponents/DashboardRoomCards";
+import DashboardRoomQuestCard from "@/components/DashboardComponents/DashboardRoomQuestCard";
 import DashboardRoomBossCard from "@/components/DashboardComponents/DashboardRoomBossCard";
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
+import { useRouter } from "next/router";
 import { useAuth } from "@/context/AuthContext";
 
 export default function DashboardRoom() {
   const { currentUser } = useAuth();
 
   if (currentUser) {
+    const router = useRouter();
+    const { room } = router.query;
+
+    function getCountry(room) {
+      let country = {
+        f202: "Japan",
+        f203: "Germany",
+        f205: "Korea",
+        f206: "Spain",
+        f207: "France",
+        f208: "India",
+      }[room];
+      return country;
+    }
     return (
       <>
         <div className="bg-violet-200 ">
@@ -16,10 +31,10 @@ export default function DashboardRoom() {
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <div>
               <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
-                Welcome Player to
+                Welcome to
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-500">
                   {" "}
-                  Room1 Country!
+                  {getCountry(room)}!
                 </span>
               </h1>
               <p className="text-lg font-normal text-gray-500 lg:text-xl">
@@ -42,12 +57,12 @@ export default function DashboardRoom() {
           </div>
           <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              <DashboardRoomCards />
-              <DashboardRoomCards />
-              <DashboardRoomCards />
-              <DashboardRoomCards />
-              <DashboardRoomCards />
-              <DashboardRoomCards />
+              <DashboardRoomQuestCard number="1" />
+              <DashboardRoomQuestCard number="2" />
+              <DashboardRoomQuestCard number="3" />
+              <DashboardRoomQuestCard number="4" />
+              <DashboardRoomQuestCard number="5" />
+              <DashboardRoomQuestCard number="6" />
             </div>
           </div>
 
