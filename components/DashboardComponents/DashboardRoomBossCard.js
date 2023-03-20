@@ -1,8 +1,10 @@
-export default function DashboardRoomCards() {
+export default function DashboardRoomBossCard() {
   return (
     <div className="block w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
       <div className="flex justify-center items-center">
-        <div className="mb-1 text-xl font-medium text-purple-700">Quest 1</div>
+        <div className="mb-1 text-xl font-medium text-purple-700">
+          Main Boss
+        </div>
       </div>
 
       <div className="w-full mt-4 bg-gray-200 rounded-full h-2.5">
