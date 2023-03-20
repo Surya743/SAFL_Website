@@ -47,8 +47,8 @@ export default function DashboardRoom() {
             <DashboardStatusCard />
           </div>
           <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
-            <h1 className="text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
-              Main Boss
+            <h1 className="text-3xl font-extrabold text-gray-900 md:text-3xl lg:text-4xl">
+              Main Boss Status
             </h1>
           </div>
           <div className="flex justify-center items-center pt-0 mx-4">
@@ -56,7 +56,7 @@ export default function DashboardRoom() {
           </div>
 
           <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
-            <h1 className="mb-2 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+            <h1 className="mb-2 text-3xl font-extrabold text-gray-900 md:text-3xl lg:text-4xl">
               Tasks
             </h1>
           </div>

@@ -16,14 +16,52 @@ export function AuthProvider({children}){
     const [loading,setLoading] = useState(true);
     const userInfo = useRef();
 
-    function signup(email,password,teamName,teamLeaderName,mobileNumber){
+    async function signup(email,password,teamName,teamLeaderName,mobileNumber){
         return createUserWithEmailAndPassword(auth,email,password).then(async cred => {
             try{
                 await setDoc(doc(db, "users", cred.user.uid), {
                     email : email,
                     teamName : teamName,
                     teamLeaderName : teamLeaderName,
-                    mobileNumber : mobileNumber
+                    mobileNumber : mobileNumber,
+                    roomDetails : {
+                        japan : {
+                                roomCompletedStatus : false,
+                                roomHealth : 0,
+                                roomPoints : 0,
+                                startTime : 0,
+                                endTime : 0,
+                                game1 : {
+                                    health : 10,
+                                    points : 10
+                                },
+                                game2 : {
+                                    health : 10,
+                                    points : 10
+                                },
+                                game3 : {
+                                    health : 10,
+                                    points : 10
+                                },
+                                game4 : {
+                                    health : 10,
+                                    points : 10
+                                },
+                                game5 : {
+                                    health : 10,
+                                    points : 10
+                                },
+                                
+                                bossGame : {
+                                    health : 100,
+                                    points : 100
+                                }
+
+                            
+                        }
+                        
+                       
+                    }
                   });
             }
             catch(error){
