@@ -76,7 +76,7 @@ export default function DashboardNavbar() {
             <span className="sr-only">SAFL</span>
             <img
               className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              src="/safl_logo.png"
               alt=""
             />
           </a>
