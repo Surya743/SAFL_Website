@@ -8,7 +8,7 @@ export default function DashboardRoomCards(props) {
       <div className="grow">
         <div className="flex justify-center items-center">
           <div className="mb-1 text-xl font-medium text-purple-800">
-            Room {props.number} ({props.room});
+            Room {props.number} ({props.room})
           </div>
         </div>
         <div className="w-full mt-4 bg-gray-200 rounded-full h-2.5">
