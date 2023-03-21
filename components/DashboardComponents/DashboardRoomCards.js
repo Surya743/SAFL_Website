@@ -1,6 +1,6 @@
 export default function DashboardRoomCards(props) {
   // console.log(props);
-  const urlParams = new URLSearchParams({ room: props.room }).toString();
+  const urlParams = new URLSearchParams({ name: props.room }).toString();
   // console.log(urlParams);
   const room = "/dashboard/room?" + urlParams;
   return (

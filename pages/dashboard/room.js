@@ -6,16 +6,46 @@ import RoomStatusCard from "@/components/DashboardComponents/RoomStatusCard";
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
 import { useRouter } from "next/router";
 import { useAuth } from "@/context/AuthContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { db } from "../../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function DashboardRoom() {
   const { currentUser } = useAuth();
   const [started, setStarted] = useState(false);
+  const [teamName, setTeamName] = useState("");
+  const [roomData, setRoomData] = useState({});
+  const [startTime, setStartTime] = useState(0);
+  const [endTime, setEndTime] = useState(0);
+  const [roomPoints, setRoomPoints] = useState(0);
+  const [roomHealth, setRoomHealth] = useState(0);
+  const [roomCompletedStatus, setRoomCompletedStatus] = useState(false);
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const docRef = doc(db, "users", currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          console.log(data);
+          setTeamName(data.teamName);
+          setRoomData(data.roomDetails);
+          // setTotalPoints(data.roomDetails.france.)
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   if (currentUser) {
     const router = useRouter();
-    const { room } = router.query;
-
+    const { name } = router.query;
+    console.log(router.query);
     // function getCountry(room) {
     //   let country = {
     //     f202: "Japan",
@@ -34,10 +64,10 @@ export default function DashboardRoom() {
           <div className="flex mx-8 my-8 lg:mt-20 lg:mx-20 justify-center">
             <div>
               <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
-                Welcome to
+                Welcome {teamName} to
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-500">
                   {" "}
-                  {room}!
+                  {name.charAt(0).toUpperCase() + name.slice(1)}!
                 </span>
               </h1>
               <p className="text-lg font-normal text-gray-500 lg:text-xl">
@@ -52,11 +82,20 @@ export default function DashboardRoom() {
               </div>
               <div className="flex mx-8 my-12 lg:mt-12 lg:mx-20 justify-center">
                 <h1 className="text-3xl font-extrabold text-gray-900 md:text-3xl lg:text-4xl">
-                  Main Boss Status
+                  Main Boss
                 </h1>
               </div>
               <div className="flex justify-center items-center pt-0 mx-4">
-                <DashboardRoomBossCard />
+                {/* <DashboardRoomBossCard /> */}
+                {roomData.map((room) => {
+                  if (room.roomName == name) {
+                    return room.games.map((game) => {
+                      console.log(game);
+                      if (game.name == "bossGame")
+                        return <DashboardRoomBossCard details={game} />;
+                    });
+                  }
+                })}
               </div>
 
               <div className="flex mx-8 my-12 lg:mt-12 lg:mx-20 justify-center">
@@ -66,12 +105,21 @@ export default function DashboardRoom() {
               </div>
               <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-                  <DashboardRoomQuestCard number="1" />
+                  {/* <DashboardRoomQuestCard number="1" />
                   <DashboardRoomQuestCard number="2" />
                   <DashboardRoomQuestCard number="3" />
                   <DashboardRoomQuestCard number="4" />
                   <DashboardRoomQuestCard number="5" />
-                  <DashboardRoomQuestCard number="6" />
+                  <DashboardRoomQuestCard number="6" /> */}
+                  {roomData.map((room) => {
+                    if (room.roomName == name) {
+                      return room.games.map((game) => {
+                        console.log(game);
+                        if (game.name != "bossGame")
+                          return <DashboardRoomQuestCard details={game} />;
+                      });
+                    }
+                  })}
                 </div>
               </div>
             </>

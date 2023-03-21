@@ -12,13 +12,13 @@ export default function DashboardRoom() {
   const { currentUser } = useAuth();
   // console.log(currentUser)
   const [loading, isLoading] = useState(false);
-  const [teamName,setTeamName] = useState("");
-  const [totalPoints,setTotalPoints] = useState("");
-  const [japanPoints,setJapanPoints] = useState("");
-  const [indiaPoints,setIndiaPoints] = useState("");
-  const [germanyPoints,setGermanyPoints] = useState("");
-  const [francePoints,setFrancePoints] = useState("");
-  const [spainPoints,setSpainPoints] = useState("");
+  const [teamName, setTeamName] = useState("");
+  const [totalPoints, setTotalPoints] = useState("");
+  const [japanPoints, setJapanPoints] = useState("");
+  const [indiaPoints, setIndiaPoints] = useState("");
+  const [germanyPoints, setGermanyPoints] = useState("");
+  const [francePoints, setFrancePoints] = useState("");
+  const [spainPoints, setSpainPoints] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -26,13 +26,13 @@ export default function DashboardRoom() {
         const docRef = doc(db, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          const data = docSnap.data()
+          const data = docSnap.data();
           console.log(data);
           setTeamName(data.teamName);
           // setTotalPoints(data.roomDetails.france.)
         }
-      } catch(error) {
-        console.log(error)
+      } catch (error) {
+        console.log(error);
       }
     }
 
@@ -68,12 +68,12 @@ export default function DashboardRoom() {
           </div>
           <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              <DashboardRoomCards number="1" room="Japan" />
-              <DashboardRoomCards number="2" room="Germany" />
-              <DashboardRoomCards number="3" room="Korea" />
-              <DashboardRoomCards number="4" room="Spain" />
-              <DashboardRoomCards number="5" room="France" />
-              <DashboardRoomCards number="6" room="India" />
+              <DashboardRoomCards number="1" room="japan" />
+              <DashboardRoomCards number="2" room="germany" />
+              <DashboardRoomCards number="3" room="korea" />
+              <DashboardRoomCards number="4" room="spain" />
+              <DashboardRoomCards number="5" room="france" />
+              <DashboardRoomCards number="6" room="india" />
             </div>
           </div>
 
