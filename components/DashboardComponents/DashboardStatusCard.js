@@ -1,4 +1,4 @@
-export default function DashboardStatusCard() {
+export default function DashboardStatusCard({totalPoints}) {
   return (
     <div className="block w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
       <div className="flex justify-center items-center">
@@ -41,7 +41,13 @@ export default function DashboardStatusCard() {
         </svg>
 
         <div className="mb-1 text-base font-medium text-purple-800">
-          Total Points:
+          Total Points:      
+          <span className="text-fuchsia-600">
+            {" "}
+            
+          {totalPoints}
+
+          </span>
         </div>
       </div>
 
