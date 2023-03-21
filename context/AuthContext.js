@@ -58,7 +58,178 @@ export function AuthProvider({children}){
                                 }
 
                             
+                        },
+                        germany : {
+                            roomCompletedStatus : false,
+                            roomHealth : 0,
+                            roomPoints : 0,
+                            startTime : 0,
+                            endTime : 0,
+                            game1 : {
+                                health : 10,
+                                points : 10
+                            },
+                            game2 : {
+                                health : 10,
+                                points : 10
+                            },
+                            game3 : {
+                                health : 10,
+                                points : 10
+                            },
+                            game4 : {
+                                health : 10,
+                                points : 10
+                            },
+                            game5 : {
+                                health : 10,
+                                points : 10
+                            },
+                            
+                            bossGame : {
+                                health : 100,
+                                points : 100
+                            }
+
+                        
+                    },
+                    spain : {
+                        roomCompletedStatus : false,
+                        roomHealth : 0,
+                        roomPoints : 0,
+                        startTime : 0,
+                        endTime : 0,
+                        game1 : {
+                            health : 10,
+                            points : 10
+                        },
+                        game2 : {
+                            health : 10,
+                            points : 10
+                        },
+                        game3 : {
+                            health : 10,
+                            points : 10
+                        },
+                        game4 : {
+                            health : 10,
+                            points : 10
+                        },
+                        game5 : {
+                            health : 10,
+                            points : 10
+                        },
+                        
+                        bossGame : {
+                            health : 100,
+                            points : 100
                         }
+
+                    
+                },
+                france : {
+                    roomCompletedStatus : false,
+                    roomHealth : 0,
+                    roomPoints : 0,
+                    startTime : 0,
+                    endTime : 0,
+                    game1 : {
+                        health : 10,
+                        points : 10
+                    },
+                    game2 : {
+                        health : 10,
+                        points : 10
+                    },
+                    game3 : {
+                        health : 10,
+                        points : 10
+                    },
+                    game4 : {
+                        health : 10,
+                        points : 10
+                    },
+                    game5 : {
+                        health : 10,
+                        points : 10
+                    },
+                    
+                    bossGame : {
+                        health : 100,
+                        points : 100
+                    }
+
+                
+            },
+            india : {
+                roomCompletedStatus : false,
+                roomHealth : 0,
+                roomPoints : 0,
+                startTime : 0,
+                endTime : 0,
+                game1 : {
+                    health : 10,
+                    points : 10
+                },
+                game2 : {
+                    health : 10,
+                    points : 10
+                },
+                game3 : {
+                    health : 10,
+                    points : 10
+                },
+                game4 : {
+                    health : 10,
+                    points : 10
+                },
+                game5 : {
+                    health : 10,
+                    points : 10
+                },
+                
+                bossGame : {
+                    health : 100,
+                    points : 100
+                }
+
+            
+        },
+        korea : {
+            roomCompletedStatus : false,
+            roomHealth : 0,
+            roomPoints : 0,
+            startTime : 0,
+            endTime : 0,
+            game1 : {
+                health : 10,
+                points : 10
+            },
+            game2 : {
+                health : 10,
+                points : 10
+            },
+            game3 : {
+                health : 10,
+                points : 10
+            },
+            game4 : {
+                health : 10,
+                points : 10
+            },
+            game5 : {
+                health : 10,
+                points : 10
+            },
+            
+            bossGame : {
+                health : 100,
+                points : 100
+            }
+
+        
+    }
+
                         
                        
                     }

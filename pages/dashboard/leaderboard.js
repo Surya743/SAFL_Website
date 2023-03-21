@@ -1,7 +1,13 @@
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar"
 
 const people = [
-    { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
+    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
+    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
+    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
+    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
+    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
+    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
+
   ]
   
   export default function Leaderboard() {
@@ -10,7 +16,7 @@ const people = [
         <DashboardNavbar/>
       <div className="px-4 sm:px-6 lg:px-8 bg-violet-200 h-screen">
         
-        <div className="flex justify-center items-center lg:py-8 md:py-4">
+        <div className="flex justify-center items-center pt-8 lg:py-8 md:py-4">
           
           <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
                 
@@ -46,13 +52,13 @@ const people = [
                   </thead>
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {people.map((person) => (
-                      <tr key={person.email}>
+                      <tr key={person.rank}>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                          {person.name}
+                          {person.rank}
                         </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.title}</td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.teamName}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.teamLeader}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.points}</td>
                         
                       </tr>
                     ))}

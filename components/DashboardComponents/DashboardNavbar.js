@@ -47,10 +47,10 @@ export default function DashboardNavbar() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/dashboard" className="text-sm font-semibold leading-6 text-gray-900">
             Dashboard
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/dashboard/leaderboard" className="text-sm font-semibold leading-6 text-gray-900">
             Leaderboard
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">

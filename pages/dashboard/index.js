@@ -4,10 +4,31 @@ import DashboardRoomCards from "@/components/DashboardComponents/DashboardRoomCa
 import DashboardStatusCard from "@/components/DashboardComponents/DashboardStatusCard";
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
 import { useAuth } from "@/context/AuthContext";
+import {doc,getDoc} from "firebase/firestore"
+import { useEffect, useState } from "react";
+import { db } from "../../firebase"
 
 export default function DashboardRoom() {
   const { currentUser } = useAuth();
+  // console.log(currentUser)
+  const [loading,isLoading] = useState(false);
+  useEffect(() => {
+    async function fetchData(){
+      try{
+        const docRef = doc(db,'users',currentUser.uid)
+        const docSnap = await getDoc(docRef);
+        if(docSnap.exists()){
+          console.log(docSnap.data());
+        }
+      }
+      catch{
 
+      }
+
+    }
+
+    fetchData()
+  },[])
   if (currentUser) {
     return (
       <>
