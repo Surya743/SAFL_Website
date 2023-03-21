@@ -12,13 +12,13 @@ export default function DashboardRoom() {
   const { currentUser } = useAuth();
   // console.log(currentUser)
   const [loading, isLoading] = useState(false);
-  const [teamName, setTeamName] = useState("");
-  const [totalPoints, setTotalPoints] = useState("");
-  const [japanPoints, setJapanPoints] = useState("");
-  const [indiaPoints, setIndiaPoints] = useState("");
-  const [germanyPoints, setGermanyPoints] = useState("");
-  const [francePoints, setFrancePoints] = useState("");
-  const [spainPoints, setSpainPoints] = useState("");
+  const [teamName,setTeamName] = useState("");
+  const [totalPoints,setTotalPoints] = useState("");
+  const [japanPoints,setJapanPoints] = useState("");
+  const [indiaPoints,setIndiaPoints] = useState("");
+  const [germanyPoints,setGermanyPoints] = useState("");
+  const [francePoints,setFrancePoints] = useState("");
+  const [spainPoints,setSpainPoints] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -29,6 +29,18 @@ export default function DashboardRoom() {
           const data = docSnap.data();
           console.log(data);
           setTeamName(data.teamName);
+
+          let totalPoints = 0;
+          data.roomDetails.map((room) => {
+            
+            room.games.map((game) => {
+              console.log(game.points)
+              totalPoints= totalPoints + game.points
+              
+            })
+          })
+
+          setTotalPoints(totalPoints)
           // setTotalPoints(data.roomDetails.france.)
         }
       } catch (error) {
@@ -58,7 +70,7 @@ export default function DashboardRoom() {
             </div>
           </div>
           <div className="flex justify-center items-center pt-8 mx-4">
-            <DashboardStatusCard />
+            <DashboardStatusCard totalPoints={totalPoints} />
           </div>
 
           <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
