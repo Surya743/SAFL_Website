@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function DashboardRoomCards(props) {
   // console.log(props);
   const urlParams = new URLSearchParams({ room: props.room }).toString();

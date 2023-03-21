@@ -4,31 +4,27 @@ import DashboardRoomCards from "@/components/DashboardComponents/DashboardRoomCa
 import DashboardStatusCard from "@/components/DashboardComponents/DashboardStatusCard";
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
 import { useAuth } from "@/context/AuthContext";
-import {doc,getDoc} from "firebase/firestore"
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../../firebase"
+import { db } from "../../firebase";
 
 export default function DashboardRoom() {
   const { currentUser } = useAuth();
   // console.log(currentUser)
-  const [loading,isLoading] = useState(false);
+  const [loading, isLoading] = useState(false);
   useEffect(() => {
-    async function fetchData(){
-      try{
-        const docRef = doc(db,'users',currentUser.uid)
+    async function fetchData() {
+      try {
+        const docRef = doc(db, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
-        if(docSnap.exists()){
+        if (docSnap.exists()) {
           console.log(docSnap.data());
         }
-      }
-      catch{
-
-      }
-
+      } catch {}
     }
 
-    fetchData()
-  },[])
+    fetchData();
+  }, []);
   if (currentUser) {
     return (
       <>
@@ -59,12 +55,12 @@ export default function DashboardRoom() {
           </div>
           <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              <DashboardRoomCards number="1" room="f202" />
-              <DashboardRoomCards number="2" room="f203" />
-              <DashboardRoomCards number="3" room="f205" />
-              <DashboardRoomCards number="4" room="f206" />
-              <DashboardRoomCards number="5" room="f207" />
-              <DashboardRoomCards number="6" room="f208" />
+              <DashboardRoomCards number="1" room="Japan" />
+              <DashboardRoomCards number="2" room="Germany" />
+              <DashboardRoomCards number="3" room="Korea" />
+              <DashboardRoomCards number="4" room="Spain" />
+              <DashboardRoomCards number="5" room="France" />
+              <DashboardRoomCards number="6" room="India" />
             </div>
           </div>
 

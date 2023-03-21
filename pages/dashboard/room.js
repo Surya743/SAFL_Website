@@ -35,7 +35,7 @@ export default function DashboardRoom() {
                 Welcome to
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-500">
                   {" "}
-                  {getCountry(room)}!
+                  {room}!
                 </span>
               </h1>
               <p className="text-lg font-normal text-gray-500 lg:text-xl">
