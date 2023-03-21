@@ -24,215 +24,250 @@ export function AuthProvider({children}){
                     teamName : teamName,
                     teamLeaderName : teamLeaderName,
                     mobileNumber : mobileNumber,
-                    roomDetails : {
-                        japan : {
+                    roomDetails : [
+                        {       roomName : "japan",
                                 roomCompletedStatus : false,
                                 roomHealth : 0,
                                 roomPoints : 0,
                                 startTime : 0,
                                 endTime : 0,
-                                game1 : {
+                                games : [{
+                                    name : "game1",
                                     health : 10,
                                     points : 10
                                 },
-                                game2 : {
+                                {
+                                    name : "game2",
                                     health : 10,
                                     points : 10
                                 },
-                                game3 : {
+                                {
+                                    name : "game3",
                                     health : 10,
                                     points : 10
                                 },
-                                game4 : {
+                                {
+                                    name : "game4",
                                     health : 10,
                                     points : 10
                                 },
-                                game5 : {
+                                {
+                                    name : "game5",
                                     health : 10,
                                     points : 10
                                 },
-                                
-                                bossGame : {
-                                    health : 100,
-                                    points : 100
-                                }
+                                {
+                                    name : "bossGame",
+                                    health : 10,
+                                    points : 10
+                                },],
+                            
 
                             
                         },
-                        germany : {
-                            roomCompletedStatus : false,
-                            roomHealth : 0,
-                            roomPoints : 0,
-                            startTime : 0,
-                            endTime : 0,
-                            game1 : {
-                                health : 10,
-                                points : 10
-                            },
-                            game2 : {
-                                health : 10,
-                                points : 10
-                            },
-                            game3 : {
-                                health : 10,
-                                points : 10
-                            },
-                            game4 : {
-                                health : 10,
-                                points : 10
-                            },
-                            game5 : {
-                                health : 10,
-                                points : 10
-                            },
+                        {       roomName : "germany",
+                                roomCompletedStatus : false,
+                                roomHealth : 0,
+                                roomPoints : 0,
+                                startTime : 0,
+                                endTime : 0,
+                                games : [{
+                                    name : "game1",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game2",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game3",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game4",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game5",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "bossGame",
+                                    health : 10,
+                                    points : 10
+                                },],
                             
-                            bossGame : {
-                                health : 100,
-                                points : 100
-                            }
 
-                        
-                    },
-                    spain : {
-                        roomCompletedStatus : false,
-                        roomHealth : 0,
-                        roomPoints : 0,
-                        startTime : 0,
-                        endTime : 0,
-                        game1 : {
-                            health : 10,
-                            points : 10
+                            
                         },
-                        game2 : {
-                            health : 10,
-                            points : 10
+                        {       roomName : "france",
+                                roomCompletedStatus : false,
+                                roomHealth : 0,
+                                roomPoints : 0,
+                                startTime : 0,
+                                endTime : 0,
+                                games : [{
+                                    name : "game1",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game2",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game3",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game4",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game5",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "bossGame",
+                                    health : 10,
+                                    points : 10
+                                },],
+                            
+
+                            
                         },
-                        game3 : {
-                            health : 10,
-                            points : 10
+                        {       roomName : "india",
+                                roomCompletedStatus : false,
+                                roomHealth : 0,
+                                roomPoints : 0,
+                                startTime : 0,
+                                endTime : 0,
+                                games : [{
+                                    name : "game1",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game2",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game3",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game4",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game5",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "bossGame",
+                                    health : 10,
+                                    points : 10
+                                },],
+                            
+
+                            
                         },
-                        game4 : {
-                            health : 10,
-                            points : 10
+                        {       roomName : "spain",
+                                roomCompletedStatus : false,
+                                roomHealth : 0,
+                                roomPoints : 0,
+                                startTime : 0,
+                                endTime : 0,
+                                games : [{
+                                    name : "game1",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game2",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game3",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game4",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game5",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "bossGame",
+                                    health : 10,
+                                    points : 10
+                                },],
+                            
+
+                            
                         },
-                        game5 : {
-                            health : 10,
-                            points : 10
+                        {       roomName : "korea",
+                                roomCompletedStatus : false,
+                                roomHealth : 0,
+                                roomPoints : 0,
+                                startTime : 0,
+                                endTime : 0,
+                                games : [{
+                                    name : "game1",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game2",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game3",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game4",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "game5",
+                                    health : 10,
+                                    points : 10
+                                },
+                                {
+                                    name : "bossGame",
+                                    health : 10,
+                                    points : 10
+                                },],
+                            
+
+                            
                         },
-                        
-                        bossGame : {
-                            health : 100,
-                            points : 100
-                        }
-
-                    
-                },
-                france : {
-                    roomCompletedStatus : false,
-                    roomHealth : 0,
-                    roomPoints : 0,
-                    startTime : 0,
-                    endTime : 0,
-                    game1 : {
-                        health : 10,
-                        points : 10
-                    },
-                    game2 : {
-                        health : 10,
-                        points : 10
-                    },
-                    game3 : {
-                        health : 10,
-                        points : 10
-                    },
-                    game4 : {
-                        health : 10,
-                        points : 10
-                    },
-                    game5 : {
-                        health : 10,
-                        points : 10
-                    },
-                    
-                    bossGame : {
-                        health : 100,
-                        points : 100
-                    }
-
-                
-            },
-            india : {
-                roomCompletedStatus : false,
-                roomHealth : 0,
-                roomPoints : 0,
-                startTime : 0,
-                endTime : 0,
-                game1 : {
-                    health : 10,
-                    points : 10
-                },
-                game2 : {
-                    health : 10,
-                    points : 10
-                },
-                game3 : {
-                    health : 10,
-                    points : 10
-                },
-                game4 : {
-                    health : 10,
-                    points : 10
-                },
-                game5 : {
-                    health : 10,
-                    points : 10
-                },
-                
-                bossGame : {
-                    health : 100,
-                    points : 100
-                }
-
-            
-        },
-        korea : {
-            roomCompletedStatus : false,
-            roomHealth : 0,
-            roomPoints : 0,
-            startTime : 0,
-            endTime : 0,
-            game1 : {
-                health : 10,
-                points : 10
-            },
-            game2 : {
-                health : 10,
-                points : 10
-            },
-            game3 : {
-                health : 10,
-                points : 10
-            },
-            game4 : {
-                health : 10,
-                points : 10
-            },
-            game5 : {
-                health : 10,
-                points : 10
-            },
-            
-            bossGame : {
-                health : 100,
-                points : 100
-            }
-
-        
-    }
-
                         
                        
-                    }
+]
                   });
             }
             catch(error){

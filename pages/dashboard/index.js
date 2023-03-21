@@ -12,15 +12,28 @@ export default function DashboardRoom() {
   const { currentUser } = useAuth();
   // console.log(currentUser)
   const [loading, isLoading] = useState(false);
+  const [teamName,setTeamName] = useState("");
+  const [totalPoints,setTotalPoints] = useState("");
+  const [japanPoints,setJapanPoints] = useState("");
+  const [indiaPoints,setIndiaPoints] = useState("");
+  const [germanyPoints,setGermanyPoints] = useState("");
+  const [francePoints,setFrancePoints] = useState("");
+  const [spainPoints,setSpainPoints] = useState("");
+
   useEffect(() => {
     async function fetchData() {
       try {
         const docRef = doc(db, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          console.log(docSnap.data());
+          const data = docSnap.data()
+          console.log(data);
+          setTeamName(data.teamName);
+          // setTotalPoints(data.roomDetails.france.)
         }
-      } catch {}
+      } catch(error) {
+        console.log(error)
+      }
     }
 
     fetchData();
