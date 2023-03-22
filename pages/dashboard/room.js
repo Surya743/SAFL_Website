@@ -14,7 +14,7 @@ export default function DashboardRoom() {
   const { currentUser } = useAuth();
   const [started, setStarted] = useState(false);
   const [teamName, setTeamName] = useState("");
-  const [roomData, setRoomData] = useState({});
+  const [roomData, setRoomData] = useState([]);
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
   const [roomCompletedStatus, setRoomCompletedStatus] = useState(false);
