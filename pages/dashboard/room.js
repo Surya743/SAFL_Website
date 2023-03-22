@@ -100,7 +100,7 @@ export default function DashboardRoom() {
 
                 <div className="flex mx-8 my-12 lg:mt-12 lg:mx-20 justify-center">
                   <h1 className="mb-2 text-3xl font-extrabold text-gray-900 md:text-3xl lg:text-4xl">
-                    Tasks
+                    Games
                   </h1>
                 </div>
                 <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
