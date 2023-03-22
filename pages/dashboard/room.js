@@ -25,15 +25,14 @@ export default function DashboardRoom() {
       try {
         const docRef = doc(db, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
-        const params = new URLSearchParams(window.location.search)
-        console.log(params)
+        const params = new URLSearchParams(window.location.search);
+        console.log(params);
         if (docSnap.exists()) {
           const data = docSnap.data();
           console.log(data);
           setTeamName(data.teamName);
           setRoomData(data.roomDetails);
           // setRoomData(data)
-          
         }
       } catch (error) {
         console.log(error);
@@ -47,8 +46,8 @@ export default function DashboardRoom() {
     const router = useRouter();
     const { name } = router.query;
     console.log(router.query);
-// console.log(roomData)
-   
+    // console.log(roomData)
+
     return (
       <>
         <div className="min-h-screen bg-violet-200 ">
@@ -68,96 +67,85 @@ export default function DashboardRoom() {
             </div>
           </div>
           <div className="flex flex-col">
-          {started ? (
-            <>
-              <div className="flex justify-center items-center pt-8 mx-4">
-                {roomData.map((room) => {
+            {started ? (
+              <>
+                <div className="flex justify-center items-center pt-8 mx-4">
+                  {roomData.map((room) => {
                     if (room.roomName == name) {
-                      
-                      
-                      return <RoomStatusCard roomHealth={room.roomHealth} roomPoints={room.roomPoints} />;
-                    
+                      return (
+                        <RoomStatusCard
+                          roomHealth={room.roomHealth}
+                          roomPoints={room.roomPoints}
+                        />
+                      );
                     }
                   })}
-              </div>
-              <div className="flex mx-8 my-12 lg:mt-12 lg:mx-20 justify-center">
-                <h1 className="text-3xl font-extrabold text-gray-900 md:text-3xl lg:text-4xl">
-                  Main Boss
-                </h1>
-              </div>
-              <div className="flex justify-center items-center pt-0 mx-4">
-                {roomData.map((room) => {
-                  if (room.roomName == name) {
-                    return room.games.map((game) => {
-                      console.log(game);
-                      if (game.name == "bossGame")
-                        return <DashboardRoomBossCard details={game} />;
-                    });
-                  }
-                })}
-              </div>
-
-              <div className="flex mx-8 my-12 lg:mt-12 lg:mx-20 justify-center">
-                <h1 className="mb-2 text-3xl font-extrabold text-gray-900 md:text-3xl lg:text-4xl">
-                  Tasks
-                </h1>
-              </div>
-              <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-
+                </div>
+                <div className="flex mx-8 my-12 lg:mt-12 lg:mx-20 justify-center">
+                  <h1 className="text-3xl font-extrabold text-gray-900 md:text-3xl lg:text-4xl">
+                    Main Boss
+                  </h1>
+                </div>
+                <div className="flex justify-center items-center pt-0 mx-4">
                   {roomData.map((room) => {
                     if (room.roomName == name) {
                       return room.games.map((game) => {
                         console.log(game);
-                        if (game.name != "bossGame")
-                          return <DashboardRoomQuestCard details={game} />;
+                        if (game.name == "bossGame")
+                          return <DashboardRoomBossCard details={game} />;
                       });
                     }
                   })}
                 </div>
-              </div>
-            </>
-          ) : (
-            <>
-            <div className="flex justify-center py-12">
-            <div>
-  <p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
-    Track work across the enterprise through an open, collaborative platform.
-    Link issues across Jira and ingest data from other software development
-    tools, so your IT support and operations teams have richer contextual
-    information to rapidly respond to requests, incidents, and changes.
-  </p>
-  <p className="font-light text-gray-500 dark:text-gray-400">
-    Deliver great service experiences fast - without the complexity of
-    traditional ITSM solutions.Accelerate critical development work, eliminate
-    toil, and deploy changes with ease, with a complete audit trail for every
-    change.
-  </p>
-</div>
 
-            </div>
+                <div className="flex mx-8 my-12 lg:mt-12 lg:mx-20 justify-center">
+                  <h1 className="mb-2 text-3xl font-extrabold text-gray-900 md:text-3xl lg:text-4xl">
+                    Tasks
+                  </h1>
+                </div>
+                <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                    {roomData.map((room) => {
+                      if (room.roomName == name) {
+                        return room.games.map((game) => {
+                          console.log(game);
+                          if (game.name != "bossGame")
+                            return <DashboardRoomQuestCard details={game} />;
+                        });
+                      }
+                    })}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex justify-center py-12">
+                  <div>
+                    <p className="mb-3 mx-6 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
+                      Track work across the enterprise through an open,
+                      collaborative platform. Link issues across Jira and ingest
+                      data from other software development tools, so your IT
+                      support and operations teams have richer contextual
+                      information to rapidly respond to requests, incidents, and
+                      changes.
+                    </p>
+                  </div>
+                </div>
 
-              <div className="flex flex-col justify-center items-center pt-6">
-
-              <button
-                type="button"
-                className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                onClick={() => setStarted(true)}
-              >
-                Start Room
-              </button>
-            </div>
-            </>
-            
-          )}
-          
-            
+                <div className="flex flex-col justify-center items-center pt-6">
+                  <button
+                    type="button"
+                    className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                    onClick={() => setStarted(true)}
+                  >
+                    Start Room
+                  </button>
+                </div>
+              </>
+            )}
           </div>
-          
-          
-          <div className="py-12">
-            
-          </div>
+
+          <div className="py-12"></div>
         </div>
       </>
     );

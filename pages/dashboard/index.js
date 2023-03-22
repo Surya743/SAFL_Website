@@ -30,13 +30,13 @@ export default function DashboardRoom() {
           // console.log(roomData);
           let totalPointstemp = 0;
           let totalHealthtemp = 0;
-          console.log(roomData);
+         // console.log(roomData);
           data.roomDetails.map((room) => {
-            console.log(room.roomPoints);
+            //console.log(room.roomPoints);
             totalPointstemp = totalPointstemp + room.roomPoints;
             totalHealthtemp = totalHealthtemp + room.roomHealth;
           });
-          console.log(totalPointstemp);
+          //console.log(totalPointstemp);
           setTotalPoints(totalPointstemp);
           setTotalHealth(totalHealthtemp);
         }
