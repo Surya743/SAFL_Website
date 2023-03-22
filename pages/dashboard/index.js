@@ -12,13 +12,11 @@ export default function DashboardRoom() {
   const { currentUser } = useAuth();
   // console.log(currentUser)
   const [loading, isLoading] = useState(false);
-  const [teamName,setTeamName] = useState("");
-  const [totalPoints,setTotalPoints] = useState("");
-  const [japanPoints,setJapanPoints] = useState("");
-  const [indiaPoints,setIndiaPoints] = useState("");
-  const [germanyPoints,setGermanyPoints] = useState("");
-  const [francePoints,setFrancePoints] = useState("");
-  const [spainPoints,setSpainPoints] = useState("");
+  const [roomData, setRoomData] = useState([]);
+  const [roomName, setRoomName] = useState("");
+  const [teamName, setTeamName] = useState("");
+  const [totalPoints, setTotalPoints] = useState(0);
+  const [totalHealth, setTotalHealth] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -27,21 +25,20 @@ export default function DashboardRoom() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          console.log(data);
           setTeamName(data.teamName);
-
-          let totalPoints = 0;
+          setRoomData(data.roomDetails);
+          // console.log(roomData);
+          let totalPointstemp = 0;
+          let totalHealthtemp = 0;
+          console.log(roomData);
           data.roomDetails.map((room) => {
-            
-            room.games.map((game) => {
-              console.log(game.points)
-              totalPoints= totalPoints + game.points
-              
-            })
-          })
-
-          setTotalPoints(totalPoints)
-          // setTotalPoints(data.roomDetails.france.)
+            console.log(room.roomPoints);
+            totalPointstemp = totalPointstemp + room.roomPoints;
+            totalHealthtemp = totalHealthtemp + room.roomHealth;
+          });
+          console.log(totalPointstemp);
+          setTotalPoints(totalPointstemp);
+          setTotalHealth(totalHealthtemp);
         }
       } catch (error) {
         console.log(error);
@@ -58,7 +55,7 @@ export default function DashboardRoom() {
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <div>
               <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
-                Welcome to
+                Welcome {teamName} to
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-500">
                   {" "}
                   Around The World!
@@ -70,7 +67,10 @@ export default function DashboardRoom() {
             </div>
           </div>
           <div className="flex justify-center items-center pt-8 mx-4">
-            <DashboardStatusCard totalPoints={totalPoints} />
+            <DashboardStatusCard
+              totalPoints={totalPoints}
+              totalHealth={totalHealth}
+            />
           </div>
 
           <div className="flex mx-8 my-12 lg:mt-32 lg:mx-20 justify-center">
@@ -80,12 +80,22 @@ export default function DashboardRoom() {
           </div>
           <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              <DashboardRoomCards number="1" room="japan" />
+              {/* <DashboardRoomCards number="1" room="japan" />
               <DashboardRoomCards number="2" room="germany" />
               <DashboardRoomCards number="3" room="korea" />
               <DashboardRoomCards number="4" room="spain" />
               <DashboardRoomCards number="5" room="france" />
-              <DashboardRoomCards number="6" room="india" />
+              <DashboardRoomCards number="6" room="india" /> */}
+              {roomData.map((room) => {
+                return (
+                  <DashboardRoomCards
+                    roomName={room.roomName}
+                    roomPoints={room.roomPoints}
+                    roomHealth={room.roomHealth}
+                    roomTime={room.endTime - room.startTime}
+                  />
+                );
+              })}
             </div>
           </div>
 
