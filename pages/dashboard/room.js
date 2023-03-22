@@ -17,8 +17,6 @@ export default function DashboardRoom() {
   const [roomData, setRoomData] = useState({});
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
-  const [roomPoints, setRoomPoints] = useState(0);
-  const [roomHealth, setRoomHealth] = useState(0);
   const [roomCompletedStatus, setRoomCompletedStatus] = useState(false);
   const [games, setGames] = useState([]);
 
@@ -27,12 +25,15 @@ export default function DashboardRoom() {
       try {
         const docRef = doc(db, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
+        const params = new URLSearchParams(window.location.search)
+        console.log(params)
         if (docSnap.exists()) {
           const data = docSnap.data();
           console.log(data);
           setTeamName(data.teamName);
           setRoomData(data.roomDetails);
-          // setTotalPoints(data.roomDetails.france.)
+          // setRoomData(data)
+          
         }
       } catch (error) {
         console.log(error);
@@ -46,17 +47,8 @@ export default function DashboardRoom() {
     const router = useRouter();
     const { name } = router.query;
     console.log(router.query);
-    // function getCountry(room) {
-    //   let country = {
-    //     f202: "Japan",
-    //     f203: "Germany",
-    //     f205: "Korea",
-    //     f206: "Spain",
-    //     f207: "France",
-    //     f208: "India",
-    //   }[room];
-    //   return country;
-    // }
+// console.log(roomData)
+   
     return (
       <>
         <div className="min-h-screen bg-violet-200 ">
@@ -75,10 +67,18 @@ export default function DashboardRoom() {
               </p>
             </div>
           </div>
+          <div className="flex flex-col">
           {started ? (
             <>
               <div className="flex justify-center items-center pt-8 mx-4">
-                <RoomStatusCard />
+                {roomData.map((room) => {
+                    if (room.roomName == name) {
+                      
+                      
+                      return <RoomStatusCard roomHealth={room.roomHealth} roomPoints={room.roomPoints} />;
+                    
+                    }
+                  })}
               </div>
               <div className="flex mx-8 my-12 lg:mt-12 lg:mx-20 justify-center">
                 <h1 className="text-3xl font-extrabold text-gray-900 md:text-3xl lg:text-4xl">
@@ -86,7 +86,6 @@ export default function DashboardRoom() {
                 </h1>
               </div>
               <div className="flex justify-center items-center pt-0 mx-4">
-                {/* <DashboardRoomBossCard /> */}
                 {roomData.map((room) => {
                   if (room.roomName == name) {
                     return room.games.map((game) => {
@@ -105,12 +104,7 @@ export default function DashboardRoom() {
               </div>
               <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-                  {/* <DashboardRoomQuestCard number="1" />
-                  <DashboardRoomQuestCard number="2" />
-                  <DashboardRoomQuestCard number="3" />
-                  <DashboardRoomQuestCard number="4" />
-                  <DashboardRoomQuestCard number="5" />
-                  <DashboardRoomQuestCard number="6" /> */}
+
                   {roomData.map((room) => {
                     if (room.roomName == name) {
                       return room.games.map((game) => {
@@ -124,7 +118,27 @@ export default function DashboardRoom() {
               </div>
             </>
           ) : (
-            <div className="flex justify-center pt-6">
+            <>
+            <div className="flex justify-center py-12">
+            <div>
+  <p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
+    Track work across the enterprise through an open, collaborative platform.
+    Link issues across Jira and ingest data from other software development
+    tools, so your IT support and operations teams have richer contextual
+    information to rapidly respond to requests, incidents, and changes.
+  </p>
+  <p className="font-light text-gray-500 dark:text-gray-400">
+    Deliver great service experiences fast - without the complexity of
+    traditional ITSM solutions.Accelerate critical development work, eliminate
+    toil, and deploy changes with ease, with a complete audit trail for every
+    change.
+  </p>
+</div>
+
+            </div>
+
+              <div className="flex flex-col justify-center items-center pt-6">
+
               <button
                 type="button"
                 className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -133,11 +147,16 @@ export default function DashboardRoom() {
                 Start Room
               </button>
             </div>
+            </>
+            
           )}
-          <div className="pb-32 md:pb-2 lg:pb-2 sm:pb-2 flex bottom-0 left-0 right-0 justify-center">
-            <div className="grow content-end  bottom-0 left-0 right-0">
-              <DashboardFooter />
-            </div>
+          
+            
+          </div>
+          
+          
+          <div className="py-12">
+            
           </div>
         </div>
       </>
