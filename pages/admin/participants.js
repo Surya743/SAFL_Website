@@ -6,6 +6,8 @@ import { db } from "../../firebase";
 import DashboardFooter from "@/components/DashboardComponents/DashboardFooter";
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
 import ParticipantsTable from "@/components/AdminComponents/ParticipantsTable";
+import Searchbar from "@/components/AdminComponents/Searchbar";
+import TablePagination from "@/components/AdminComponents/TablePagination";
 
 export default function Participants() {
   const { currentUser } = useAuth();
@@ -20,7 +22,9 @@ export default function Participants() {
               Participants
             </h1>
           </div>
+          <Searchbar />
           <ParticipantsTable />
+          <TablePagination />
         </div>
       </>
     );
