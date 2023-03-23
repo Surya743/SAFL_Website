@@ -17,7 +17,7 @@ export default function Participants() {
           <DashboardNavbar />
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
-              Welcome ADMIN!
+              Room Name
             </h1>
           </div>
           <div className="flex mx-8 my-12 lg:mt-12 lg:mx-20 justify-center">

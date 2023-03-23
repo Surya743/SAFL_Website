@@ -81,7 +81,7 @@ export default function ParticipantsTable() {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {teams.map((team) => (
-                    <tr className="hover:bg-gray-200" key={team.teamName}>
+                    <tr className="hover:bg-gray-100" key={team.teamName}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {team.teamName}
                       </td>

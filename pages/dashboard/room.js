@@ -9,12 +9,14 @@ import { useAuth } from "@/context/AuthContext";
 import { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import RoomParagraph from "@/components/DashboardComponents/RoomParagraph";
 
 export default function DashboardRoom() {
   const { currentUser } = useAuth();
   const [started, setStarted] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [roomData, setRoomData] = useState([]);
+  const [romoDesc, setRoomDesc] = useState("");
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
   const [roomCompletedStatus, setRoomCompletedStatus] = useState(false);
@@ -121,14 +123,10 @@ export default function DashboardRoom() {
               <>
                 <div className="flex justify-center py-12">
                   <div>
-                    <p className="mb-3 mx-6 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
-                      Track work across the enterprise through an open,
-                      collaborative platform. Link issues across Jira and ingest
-                      data from other software development tools, so your IT
-                      support and operations teams have richer contextual
-                      information to rapidly respond to requests, incidents, and
-                      changes.
-                    </p>
+                    {/* {() => {
+                      return <RoomParagraph description={"Hello"} />;
+                    }} */}
+                    <RoomParagraph roomName={name}/>
                   </div>
                 </div>
 
