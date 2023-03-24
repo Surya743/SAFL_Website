@@ -13,7 +13,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const docRef = doc(db, "descriptions", currentUser.uid);
+        const docRef = doc(db, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
