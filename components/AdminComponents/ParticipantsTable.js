@@ -1,3 +1,6 @@
+import { useState } from "react";
+import Modal from "@/components/AdminComponents/Modal";
+
 const teams = [
   {
     teamName: "Akatsuki",
@@ -38,6 +41,7 @@ const teams = [
 ];
 
 export default function ParticipantsTable() {
+  const [modal, setModal] = useState(false);
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="mt-8 flex flex-col">
@@ -96,10 +100,20 @@ export default function ParticipantsTable() {
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <a
+                          data-modal-target="defaultModal"
+                          data-modal-toggle="defaultModal"
                           href="#"
                           className="text-indigo-600 hover:text-indigo-900"
+                          onClick={() => setModal(true)}
                         >
-                          Edit<span className="sr-only">, {team.teamName}</span>
+                          Edit{" "}
+                          {modal
+                            ? () => {
+                                setModal(false);
+                                return <Modal />;
+                              }
+                            : null}
+                          <span className="sr-only">, {team.teamName}</span>
                         </a>
                       </td>
                     </tr>

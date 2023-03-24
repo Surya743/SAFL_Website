@@ -10,6 +10,29 @@ import AdminRoomCards from "@/components/AdminComponents/AdminRoomCards";
 export default function AdminDashboard() {
   const { currentUser } = useAuth();
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const docRef = doc(db, "descriptions", currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setTeamName(data.teamName);
+          setRoomData(data.roomDetails);
+          // console.log(roomData);
+          // console.log(roomData);
+          data.roomDetails.map((room) => {
+            
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   if (currentUser) {
     return (
       <>
@@ -18,7 +41,7 @@ export default function AdminDashboard() {
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <div>
               <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
-                Welcome ADMIN to
+                Welcome Admin to
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-500">
                   {" "}
                   Around The World!
