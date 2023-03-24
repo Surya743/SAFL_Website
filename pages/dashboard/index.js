@@ -87,6 +87,7 @@ export default function DashboardRoom() {
               <DashboardRoomCards number="5" room="france" />
               <DashboardRoomCards number="6" room="india" /> */}
               {roomData.map((room) => {
+                // console.log(room)
                 return (
                   <DashboardRoomCards
                     roomName={room.roomName}

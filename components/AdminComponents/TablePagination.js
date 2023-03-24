@@ -1,7 +1,7 @@
 export default function TablePagination() {
   return (
     <nav
-      className="flex items-center justify-between pt-4 mx-2 mt-8"
+      className="flex items-center justify-between pt-4 mx-2 mt-8 lg:mx-12 md:mx-8"
       aria-label="Table navigation"
     >
       <span className="text-sm font-normal text-gray-500">
@@ -23,9 +23,9 @@ export default function TablePagination() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
           </a>
@@ -76,9 +76,9 @@ export default function TablePagination() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
           </a>
