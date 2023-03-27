@@ -1,6 +1,5 @@
-export default function GameCards({ gameName }) {
-  const urlParams = new URLSearchParams({ name: gameName }).toString();
-  const url = "/admin/participants/country?" + urlParams;
+export default function GameCards({ gameName ,roomName}) {
+  const url = "/admin/participants?country=" + roomName + '&gameName=' + gameName;
 
   return (
     <div className="flex justify-center p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">

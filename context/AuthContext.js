@@ -24,42 +24,57 @@ export function AuthProvider({children}){
                     teamName : teamName,
                     teamLeaderName : teamLeaderName,
                     mobileNumber : mobileNumber,
+                    totalPoints : 0,
+                    totalHealth : 0,
                     roomDetails : [
                         {       roomName : "japan",
                                 roomCompletedStatus : false,
                                 roomHealth : 0,
                                 roomPoints : 0,
+                                roomStarted : false,
                                 startTime : 0,
                                 endTime : 0,
+
                                 games : [{
                                     name : "game1",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
                                 },
                                 {
                                     name : "game2",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game3",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game4",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game5",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "bossGame",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },],
                             
 
@@ -70,36 +85,50 @@ export function AuthProvider({children}){
                                 roomHealth : 0,
                                 roomPoints : 0,
                                 startTime : 0,
+                                roomStarted : false,
+
                                 endTime : 0,
+                               
                                 games : [{
                                     name : "game1",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
                                 },
                                 {
                                     name : "game2",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game3",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game4",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game5",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "bossGame",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },],
                             
 
@@ -110,36 +139,50 @@ export function AuthProvider({children}){
                                 roomHealth : 0,
                                 roomPoints : 0,
                                 startTime : 0,
+                                roomStarted : false,
+
                                 endTime : 0,
+                               
                                 games : [{
                                     name : "game1",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
                                 },
                                 {
                                     name : "game2",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game3",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game4",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game5",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "bossGame",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },],
                             
 
@@ -150,38 +193,51 @@ export function AuthProvider({children}){
                                 roomHealth : 0,
                                 roomPoints : 0,
                                 startTime : 0,
+                                roomStarted : false,
+
                                 endTime : 0,
+                               
                                 games : [{
                                     name : "game1",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
                                 },
                                 {
                                     name : "game2",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game3",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game4",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game5",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "bossGame",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },],
-                            
 
                             
                         },
@@ -190,36 +246,50 @@ export function AuthProvider({children}){
                                 roomHealth : 10,
                                 roomPoints : 10,
                                 startTime : 0,
+                                roomStarted : false,
+
                                 endTime : 0,
+                               
                                 games : [{
                                     name : "game1",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
                                 },
                                 {
                                     name : "game2",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game3",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game4",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game5",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "bossGame",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },],
                             
 
@@ -230,36 +300,50 @@ export function AuthProvider({children}){
                                 roomHealth : 0,
                                 roomPoints : 0,
                                 startTime : 0,
+                                roomStarted : false,
+
                                 endTime : 0,
+                               
                                 games : [{
                                     name : "game1",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
                                 },
                                 {
                                     name : "game2",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game3",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game4",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "game5",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },
                                 {
                                     name : "bossGame",
                                     health : 10,
-                                    points : 10
+                                    points : 10,
+                                    completed : false
+
                                 },],
                             
 

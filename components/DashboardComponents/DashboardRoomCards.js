@@ -1,12 +1,14 @@
+import Timer from "./DashboardCountUpTimer";
 export default function DashboardRoomCards({
   roomName,
   roomPoints,
   roomHealth,
   roomTime,
+  roomStarted,
+  roomCompleted,
+  roomEndTime
 }) {
-  // console.log(props);
   const urlParams = new URLSearchParams({ name: roomName }).toString();
-  // console.log(urlParams);
   const room = "/dashboard/room?" + urlParams;
   return (
     <div className="flex justify-center p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
@@ -77,16 +79,32 @@ export default function DashboardRoomCards({
           </svg>
 
           <div className="mb-1 text-base font-medium text-purple-800">
-            Time taken to complete room: {roomTime}
+            Time taken to complete room:
+            {roomStarted && !roomCompleted &&
+            <Timer time = {Date.now() - roomTime}/> 
+           
+              
+            } 
+            {!roomStarted &&
+            <>
+             <span> {" "}</span>
+            <span>Room not started</span></> 
+           
+            }
+           {roomCompleted && 
+           <>
+           <span> {" "}</span>
+           <Timer time = {roomEndTime - roomTime}/> 
+
+          </>
+           }
+            
           </div>
         </div>
 
         <div className="flex justify-center pt-6">
           <a
-            // href={{
-            //   pathname: "/dashboard/room",
-            //   query: { room: props.room },
-            // }}
+          
             href={room}
             className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >

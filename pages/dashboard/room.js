@@ -8,33 +8,82 @@ import { useRouter } from "next/router";
 import { useAuth } from "@/context/AuthContext";
 import { useState, useEffect } from "react";
 import { db } from "../../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc,updateDoc } from "firebase/firestore";
 import RoomParagraph from "@/components/DashboardComponents/RoomParagraph";
+import Loading from "@/components/Errors/Loading";
 
 export default function DashboardRoom() {
   const { currentUser } = useAuth();
   const [started, setStarted] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [roomData, setRoomData] = useState([]);
-  const [romoDesc, setRoomDesc] = useState("");
-  const [startTime, setStartTime] = useState(0);
-  const [endTime, setEndTime] = useState(0);
-  const [roomCompletedStatus, setRoomCompletedStatus] = useState(false);
-  const [games, setGames] = useState([]);
+  const[userData,setUserData] = useState({})
+  const[roomNameParam,setRoomNameParams] = useState("")
 
+
+
+  async function startRoom(){
+    
+    try{
+     
+    let temp = userData.roomDetails.map((room) => {
+        if (room.roomName == roomNameParam) {
+          room.roomStarted = true
+          room.startTime = Date.now()
+        }
+        return room
+      })
+      
+
+
+const docRef = doc(db, "users", currentUser.uid);
+
+  await updateDoc(docRef, {
+    roomDetails : temp
+  }).then(event => {
+    setStarted(true)
+  });
+
+
+
+    }
+    catch(error){
+      console.log(error)
+    }
+
+  }
   useEffect(() => {
     async function fetchData() {
+      const urlSearchParams = new URLSearchParams(window.location.search)
+      // console.log(urlSearchParams)
+      const roomName = urlSearchParams.get("name")
+      setRoomNameParams(roomName)
       try {
         const docRef = doc(db, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
-        const params = new URLSearchParams(window.location.search);
-        console.log(params);
+     
         if (docSnap.exists()) {
           const data = docSnap.data();
-          console.log(data);
+          // console.log(data);
+          setUserData(data)
           setTeamName(data.teamName);
           setRoomData(data.roomDetails);
-          // setRoomData(data)
+         data.roomDetails.map((room) => {
+            if (room.roomName == roomName) {
+              console.log(room)
+              setStarted(room.roomStarted)
+
+            }
+
+            room.games.map((game) => {
+              // console.log(game);
+              if (game.name == "bossGame")
+                return <DashboardRoomBossCard details={game} />;
+            });
+          })
+          // console.log(roomStartedStatus)  
+
+
         }
       } catch (error) {
         console.log(error);
@@ -44,13 +93,13 @@ export default function DashboardRoom() {
     fetchData();
   }, []);
 
-  if (currentUser) {
+  if (currentUser ) {
     const router = useRouter();
     const { name } = router.query;
     console.log(router.query);
     // console.log(roomData)
 
-    return (
+    return teamName && (
       <>
         <div className="min-h-screen bg-violet-200 ">
           <DashboardNavbar />
@@ -76,6 +125,7 @@ export default function DashboardRoom() {
                     if (room.roomName == name) {
                       return (
                         <RoomStatusCard
+                          // status = {}
                           roomHealth={room.roomHealth}
                           roomPoints={room.roomPoints}
                         />
@@ -92,7 +142,7 @@ export default function DashboardRoom() {
                   {roomData.map((room) => {
                     if (room.roomName == name) {
                       return room.games.map((game) => {
-                        console.log(game);
+                        // console.log(game);
                         if (game.name == "bossGame")
                           return <DashboardRoomBossCard details={game} />;
                       });
@@ -110,7 +160,7 @@ export default function DashboardRoom() {
                     {roomData.map((room) => {
                       if (room.roomName == name) {
                         return room.games.map((game) => {
-                          console.log(game);
+                          // console.log(game);
                           if (game.name != "bossGame")
                             return <DashboardRoomQuestCard details={game} />;
                         });
@@ -134,7 +184,7 @@ export default function DashboardRoom() {
                   <button
                     type="button"
                     className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                    onClick={() => setStarted(true)}
+                    onClick={() => startRoom()}
                   >
                     Start Room
                   </button>
@@ -147,7 +197,10 @@ export default function DashboardRoom() {
         </div>
       </>
     );
-  } else {
+  } else if(!currentUser) {
     return <NotLoggedIn />;
+  }
+  else{
+    return <Loading/>
   }
 }

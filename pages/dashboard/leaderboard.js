@@ -1,17 +1,41 @@
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar"
+import { collection, query, orderBy, startAfter, limit, getDocs } from "firebase/firestore"; 
+import { useEffect,useState } from "react";
+import { db } from "../../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { useAuth } from "@/context/AuthContext";
+import NotLoggedIn from "@/components/Errors/NotLoggedIn";
+import Loading from "@/components/Errors/Loading";
 
-const people = [
-    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
-    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
-    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
-    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
-    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
-    { rank: '1', teamName: 'Test', teamLeader: 'Test', points: '100' },
-
-  ]
   
-  export default function Leaderboard() {
-    return (
+export default function Leaderboard() {
+  const { currentUser } = useAuth();
+  const [teams,setTeams] = useState();
+    useEffect(()=>{
+      async function fetchData(){
+
+        try {
+          
+        // Query the first page of docs
+        const documentQuery = query(collection(db, "users"), orderBy("totalPoints", "desc"));
+        const documentSnapshots = await getDocs(documentQuery);
+        console.log(documentSnapshots.docs)
+       setTeams(documentSnapshots.docs)  
+
+        } catch (error) {
+          console.log(error);
+        }
+
+       
+      }
+
+      fetchData()
+    }
+    
+    ,[])
+
+    if(currentUser && teams){
+      return (
         <>
         <DashboardNavbar/>
       <div className="px-4 sm:px-6 lg:px-8 bg-violet-200 h-screen">
@@ -35,10 +59,10 @@ const people = [
                 <table className="min-w-full divide-y divide-gray-300">
                   <thead className="bg-gray-50">
                     <tr>
-                    <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                         Rank
                       </th>
-                      <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                         Team Name
                       </th>
                       <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -51,14 +75,14 @@ const people = [
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 bg-white">
-                    {people.map((person) => (
-                      <tr key={person.rank}>
+                    {teams.map((team,index) => (
+                      <tr key={team.data().email}>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                          {person.rank}
+                          {index+1}
                         </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.teamName}</td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.teamLeader}</td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.points}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{team.data().teamName}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{team.data().teamLeaderName}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{team.data().totalPoints}</td>
                         
                       </tr>
                     ))}
@@ -72,4 +96,12 @@ const people = [
         </>
         
     )
+    }
+    else if (!currentUser){
+      return <NotLoggedIn />;
+    }
+    else{
+      return <Loading/>
+    }
+    
   }

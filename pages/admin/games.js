@@ -56,7 +56,7 @@ export default function Participants() {
                 return room.games.map((game) => {
                   console.log(game);
                   if (game.name == "bossGame")
-                    return <BossGameCard gameName={game.name} />;
+                    return <BossGameCard gameName={game.name} roomName = {country} />;
                 });
               }
             })}
@@ -72,7 +72,7 @@ export default function Participants() {
                 if (room.roomName == country) {
                   return room.games.map((game) => {
                     if (game.name != "bossGame")
-                      return <GameCards gameName={game.name} />;
+                      return <GameCards gameName={game.name} roomName = {country} />;
                   });
                 }
               })}

@@ -2,6 +2,7 @@ import DashboardFooter from "@/components/DashboardComponents/DashboardFooter";
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
 import DashboardRoomCards from "@/components/DashboardComponents/DashboardRoomCards";
 import DashboardStatusCard from "@/components/DashboardComponents/DashboardStatusCard";
+import Loading from "@/components/Errors/Loading";
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
 import { useAuth } from "@/context/AuthContext";
 import { doc, getDoc } from "firebase/firestore";
@@ -27,16 +28,12 @@ export default function DashboardRoom() {
           const data = docSnap.data();
           setTeamName(data.teamName);
           setRoomData(data.roomDetails);
-          // console.log(roomData);
           let totalPointstemp = 0;
           let totalHealthtemp = 0;
-          // console.log(roomData);
           data.roomDetails.map((room) => {
-            //console.log(room.roomPoints);
             totalPointstemp = totalPointstemp + room.roomPoints;
             totalHealthtemp = totalHealthtemp + room.roomHealth;
           });
-          //console.log(totalPointstemp);
           setTotalPoints(totalPointstemp);
           setTotalHealth(totalHealthtemp);
         }
@@ -47,7 +44,7 @@ export default function DashboardRoom() {
 
     fetchData();
   }, []);
-  if (currentUser) {
+  if (currentUser && teamName) {
     return (
       <>
         <div className="bg-violet-200 ">
@@ -80,20 +77,17 @@ export default function DashboardRoom() {
           </div>
           <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              {/* <DashboardRoomCards number="1" room="japan" />
-              <DashboardRoomCards number="2" room="germany" />
-              <DashboardRoomCards number="3" room="korea" />
-              <DashboardRoomCards number="4" room="spain" />
-              <DashboardRoomCards number="5" room="france" />
-              <DashboardRoomCards number="6" room="india" /> */}
+              
               {roomData.map((room) => {
-                // console.log(room)
                 return (
                   <DashboardRoomCards
                     roomName={room.roomName}
                     roomPoints={room.roomPoints}
                     roomHealth={room.roomHealth}
-                    roomTime={room.endTime - room.startTime}
+                    roomTime={room.startTime}
+                    roomStarted ={room.roomStarted}
+                    roomCompleted = {room.roomCompletedStatus}
+                    roomEndTime = {room.endTime}
                   />
                 );
               })}
@@ -104,7 +98,10 @@ export default function DashboardRoom() {
         </div>
       </>
     );
-  } else {
+  } else if(!currentUser) {
     return <NotLoggedIn />;
+  }
+  else{
+    return <Loading/>
   }
 }

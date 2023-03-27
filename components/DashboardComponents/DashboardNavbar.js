@@ -10,9 +10,6 @@ import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/router";
 
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function DashboardNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,7 +24,7 @@ export default function DashboardNavbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/dashboard" className="-m-1.5 p-1.5">
             <span className="sr-only">SAFL</span>
             <img
               className="h-8 w-auto"
@@ -53,22 +50,22 @@ export default function DashboardNavbar() {
           <a href="/dashboard/leaderboard" className="text-sm font-semibold leading-6 text-gray-900">
             Leaderboard
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/dashboard/room?name=japan" className="text-sm font-semibold leading-6 text-gray-900">
             Japan
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/dashboard/room?name=germany" className="text-sm font-semibold leading-6 text-gray-900">
             Germany
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/dashboard/room?name=spain" className="text-sm font-semibold leading-6 text-gray-900">
             Spain
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/dashboard/room?name=france" className="text-sm font-semibold leading-6 text-gray-900">
             France
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/dashboard/room?name=india" className="text-sm font-semibold leading-6 text-gray-900">
             India
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/dashboard/room?name=korea" className="text-sm font-semibold leading-6 text-gray-900">
             Korea
           </a>
         </Popover.Group>
@@ -91,11 +88,11 @@ export default function DashboardNavbar() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/dashboard" className="-m-1.5 p-1.5">
               <span className="sr-only">SAFL</span>
               <img
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src="/safl_logo.png"
                 alt=""
               />
             </a>
@@ -112,22 +109,46 @@ export default function DashboardNavbar() {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <a
-                  href="#"
+                  href="/dashboard/leaderboard"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Features
+                  Leaderboard
                 </a>
                 <a
-                  href="#"
+                  href="/dashboard/room?name=japan"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Marketplace
+                  Japan
                 </a>
                 <a
-                  href="#"
+                  href="/dashboard/room?name=germany"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Company
+                  Germany
+                </a>
+                <a
+                  href="/dashboard/room?name=spain"
+                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Spain
+                </a>
+                <a
+                  href="/dashboard/room?name=france"
+                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  France
+                </a>
+                <a
+                  href="/dashboard/room?name=india"
+                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  India
+                </a>
+                <a
+                  href="/dashboard/room?name=korea"
+                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Korea
                 </a>
               </div>
               <div className="py-6">
@@ -135,7 +156,7 @@ export default function DashboardNavbar() {
                   href="#"
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Log in
+                  Log Out
                 </a>
               </div>
             </div>
