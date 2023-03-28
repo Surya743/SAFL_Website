@@ -144,7 +144,7 @@ const docRef = doc(db, "users", currentUser.uid);
                       return room.games.map((game) => {
                         // console.log(game);
                         if (game.name == "bossGame")
-                          return <DashboardRoomBossCard details={game} />;
+                          return <DashboardRoomBossCard details={game} completed = {game.completed} />;
                       });
                     }
                   })}
@@ -162,7 +162,7 @@ const docRef = doc(db, "users", currentUser.uid);
                         return room.games.map((game) => {
                           // console.log(game);
                           if (game.name != "bossGame")
-                            return <DashboardRoomQuestCard details={game} />;
+                            return <DashboardRoomQuestCard details={game} completed={game.completed} />;
                         });
                       }
                     })}

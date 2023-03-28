@@ -86,9 +86,7 @@ export function AuthProvider({children}){
                                 roomPoints : 0,
                                 startTime : 0,
                                 roomStarted : false,
-
-                                endTime : 0,
-                               
+                                endTime : 0,                               
                                 games : [{
                                     name : "game1",
                                     health : 10,
@@ -243,13 +241,11 @@ export function AuthProvider({children}){
                         },
                         {       roomName : "spain",
                                 roomCompletedStatus : false,
-                                roomHealth : 10,
-                                roomPoints : 10,
+                                roomHealth : 0,
+                                roomPoints : 0,
                                 startTime : 0,
                                 roomStarted : false,
-
-                                endTime : 0,
-                               
+                                endTime : 0,                               
                                 games : [{
                                     name : "game1",
                                     health : 10,
