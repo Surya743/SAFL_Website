@@ -51,7 +51,7 @@ const teams = [
   },
 ];
 
-export default function ParticipantsTable({ search }) {
+export default function ParticipantsTable({ search,data }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -98,25 +98,30 @@ export default function ParticipantsTable({ search }) {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {teams
+                  {data
                     .filter((item) => {
                       return search.toLowerCase() === ""
                         ? item
                         : item.teamName.toLowerCase().includes(search);
                     })
                     .map((team) => (
-                      <tr className="hover:bg-gray-100" key={team.id}>
+                      <tr className="hover:bg-gray-100" key={team.uid}>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                           {team.teamName}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          {team.roomPoints}
+                          {team.gamePoints}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          {team.roomHealth}
+                          {team.gameHealth}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          {team.completionStatus}
+                          {team.gameCompleted &&
+                          <span>Completed</span>
+                          }
+                          {!team.gameCompleted &&
+                          <span>Pending</span>
+                          }
                         </td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-left text-sm font-medium sm:pr-6">
                           <a

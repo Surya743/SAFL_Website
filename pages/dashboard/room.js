@@ -19,6 +19,8 @@ export default function DashboardRoom() {
   const [roomData, setRoomData] = useState([]);
   const[userData,setUserData] = useState({})
   const[roomNameParam,setRoomNameParams] = useState("")
+  const [totalGamesCount,setTotalGamesCount] = useState(0)
+  const [completedGamesCount,setCompletedGamesCount] = useState(0)
 
 
 
@@ -75,8 +77,10 @@ const docRef = doc(db, "users", currentUser.uid);
 
             room.games.map((game) => {
 
-              
-
+              setTotalGamesCount((count) => count+1)              
+              if(game.completed == true ){
+                setCompletedGamesCount((count) => count+1)
+              }
 
              
             });
@@ -125,6 +129,8 @@ const docRef = doc(db, "users", currentUser.uid);
                         <RoomStatusCard
                           roomHealth={room.roomHealth}
                           roomPoints={room.roomPoints}
+                          completedGames={completedGamesCount}
+                          totalGamesCount={totalGamesCount}
                         />
                       );
                     }
