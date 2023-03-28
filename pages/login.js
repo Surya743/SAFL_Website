@@ -190,7 +190,7 @@ export default function Login() {
                     <div>
                       <button
                         type="submit"
-                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm font-medium text-white bg-violet-700 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
+                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm font-medium text-white bg-violet-700 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
                       >
                         Sign in
                       </button>
@@ -245,7 +245,7 @@ export default function Login() {
                           type="text"
                           required
                           {...register("teamName")}
-                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -264,7 +264,7 @@ export default function Login() {
                           type="text"
                           required
                           {...register("teamLeaderName")}
-                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -283,7 +283,7 @@ export default function Login() {
                           type="tel"
                           required
                           {...register("mobileNumber")}
-                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -303,7 +303,7 @@ export default function Login() {
                           autoComplete="email"
                           required
                           {...register("email")}
-                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -323,7 +323,7 @@ export default function Login() {
                           autoComplete="current-password"
                           required
                           {...register("password")}
-                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -343,7 +343,7 @@ export default function Login() {
                           autoComplete="current-password"
                           required
                           {...register("confirm_password")}
-                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -351,7 +351,7 @@ export default function Login() {
                     <div>
                       <button
                         type="submit"
-                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm font-medium text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
+                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm font-medium text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
                       >
                         Register
                       </button>
