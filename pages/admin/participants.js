@@ -10,7 +10,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { useRouter } from "next/router";
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
 import ParticipantsTable from "@/components/AdminComponents/ParticipantsTable";
@@ -21,6 +21,9 @@ export default function Participants() {
   const { currentUser } = useAuth();
   const [search, setSearch] = useState("");
   const [teams, setTeams] = useState([]);
+  const dataFetchedRef = useRef(false);
+
+
   // let teams = [];
 
   useEffect(() => {
@@ -37,39 +40,36 @@ export default function Participants() {
         );
 
         const documentSnapshots = await getDocs(documentQuery);
-        let temp = {};
-
+        
         documentSnapshots.docs.map((doc) => {
-          temp.uid = doc.data().uid;
-          temp.teamName = doc.data().teamName;
-          // console.log(temp);
+
+          
           doc.data().roomDetails.map((room) => {
             if (room.roomName == country) {
               return room.games.map((game) => {
                 if (game.name == gameName) {
-                  temp.gamePoints = game.points;
-                  temp.gameHealth = game.health;
-                  temp.gameCompleted = game.completed;
-                  console.log(temp);
-                  // setTeams((team) => [...team, temp]);
+                  
+                  setTeams((prev) => [...prev,{uid : doc.data().uid,teamName : doc.data().teamName,gameCompleted:game.completed,gamePoints : game.points,gameHealth:game.health}])
+
                 }
               });
             }
-            console.log(teams);
           });
+
+
         });
       } catch (error) {
         console.log(error);
       }
     }
-
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
     fetchData();
   }, []);
 
-  if (currentUser) {
+  if (currentUser && teams) {
     const router = useRouter();
     const { country, gameName } = router.query;
-    // console.log(teams);
 
     return (
       <>
@@ -83,8 +83,7 @@ export default function Participants() {
           <div className="flex justify-center ">
             <Searchbar setSearch={setSearch} />
           </div>
-          <ParticipantsTable search={search} />
-          <TablePagination />
+          <ParticipantsTable search={search} data={teams} />
         </div>
       </>
     );

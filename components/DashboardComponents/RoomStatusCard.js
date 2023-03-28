@@ -1,4 +1,4 @@
-export default function RoomStatusCard({ roomHealth, roomPoints }) {
+export default function RoomStatusCard({ roomHealth, roomPoints,completedGames,totalGamesCount }) {
   return (
     <div className="block w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
       <div className="flex justify-center items-center">
@@ -8,9 +8,9 @@ export default function RoomStatusCard({ roomHealth, roomPoints }) {
       <div className="w-full mt-4 bg-gray-200 rounded-full h-4">
         <div
           className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs font-medium text-center p-0.5 leading-none h-4 rounded-full"
-          style={{ width: "45%" }}
+          style={{ width: `${completedGames/totalGamesCount*100}%` }}
         >
-          45%
+          {completedGames/totalGamesCount*100}%
         </div>
       </div>
 

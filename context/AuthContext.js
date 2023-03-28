@@ -21,11 +21,13 @@ export function AuthProvider({children}){
             try{
                 await setDoc(doc(db, "users", cred.user.uid), {
                     email : email,
+                    uid : cred.user.uid,
                     teamName : teamName,
                     teamLeaderName : teamLeaderName,
                     mobileNumber : mobileNumber,
                     totalPoints : 0,
                     totalHealth : 0,
+                    currency : 0,
                     roomDetails : [
                         {       roomName : "japan",
                                 roomCompletedStatus : false,
