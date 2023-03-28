@@ -29,7 +29,7 @@ export default function AdminDashboard() {
           <div className="flex justify-center items-center pt-0 mx-4"></div>
 
           <div className="flex mx-8 my-6 lg:mt-32 lg:mx-20 justify-center">
-            <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
+            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
               Rooms
             </h1>
           </div>
