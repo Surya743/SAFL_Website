@@ -33,7 +33,7 @@ export default function Participants() {
     fetchData();
   }, []);
 
-  if (currentUser) {
+  if (currentUser && currentUser.uid == process.env.NEXT_PUBLIC_ADMIN) {
     const router = useRouter();
     const { country } = router.query;
     return (

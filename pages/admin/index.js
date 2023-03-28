@@ -7,7 +7,7 @@ import AdminRoomCards from "@/components/AdminComponents/AdminRoomCards";
 export default function AdminDashboard() {
   const { currentUser } = useAuth();
 
-  if (currentUser) {
+  if (currentUser && currentUser.uid == process.env.NEXT_PUBLIC_ADMIN) {
     return (
       <>
         <div className="bg-violet-200 ">
