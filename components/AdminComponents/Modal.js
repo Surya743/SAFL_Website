@@ -2,14 +2,55 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 
-export default function Modal({ open, setOpen }) {
+export default function Modal({ open, setOpen, user }) {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (modalData) => {
+    console.log(modalData);
+    console.log("test");
+    try {
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const country = urlSearchParams.get("country");
+      const gameName = urlSearchParams.get("gameName");
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        let temp = userData.roomDetails.map((room) => {
+          if (room.roomName == country) {
+            room.roomPoints += modalData.points;
+            room.roomHealth += modalData.health;
+            return room.games.map((game) => {
+              if (game.name == gameName) {
+                game.points = game.points + modalData.points;
+                game.health = game.health + modalData.health;
+                game.completed = modalData.completion;
+              }
+              return game;
+            });
+          }
+          return room;
+        });
+        let totalPoints = data.totalPoints + modalData.points;
+        let totalHealth = data.totalHealth + modalData.health;
+        await updateDoc(docRef, {
+          roomDetails: temp,
+          totalPoints: totalPoints,
+          totalHealth: totalHealth,
+        }).then((event) => {
+          console.log(event);
+        });
+        setRoomData(data.roomDetails);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const cancelButtonRef = useRef(null);
 
   return (
@@ -57,7 +98,6 @@ export default function Modal({ open, setOpen }) {
                               Add Points
                             </label>
                             <input
-                              defaultValue={0}
                               type="number"
                               id="points"
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
@@ -73,7 +113,6 @@ export default function Modal({ open, setOpen }) {
                               Add Health
                             </label>
                             <input
-                              defaultValue={0}
                               type="number"
                               id="health"
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
