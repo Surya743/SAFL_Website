@@ -1,4 +1,9 @@
-export default function RoomStatusCard({ roomHealth, roomPoints,completedGames,totalGamesCount }) {
+export default function RoomStatusCard({
+  roomHealth,
+  roomPoints,
+  completedGames,
+  totalGamesCount,
+}) {
   return (
     <div className="block w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
       <div className="flex justify-center items-center">
@@ -7,10 +12,10 @@ export default function RoomStatusCard({ roomHealth, roomPoints,completedGames,t
 
       <div className="w-full mt-4 bg-gray-200 rounded-full h-4">
         <div
-          className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs font-medium text-center p-0.5 leading-none h-4 rounded-full"
-          style={{ width: `${completedGames/totalGamesCount*100}%` }}
+          className="text-red-300 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs font-medium text-center p-0.5 leading-none h-4 rounded-full"
+          style={{ width: `${(completedGames / totalGamesCount) * 100}%` }}
         >
-          {completedGames/totalGamesCount*100}%
+          {(completedGames / totalGamesCount) * 100}%
         </div>
       </div>
 
@@ -50,8 +55,8 @@ export default function RoomStatusCard({ roomHealth, roomPoints,completedGames,t
 
       <div className="flex justify-center pt-6">
         <a
-href="/dashboard/leaderboard"
-className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          href="/dashboard/leaderboard"
+          className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
         >
           Leaderboard
         </a>
