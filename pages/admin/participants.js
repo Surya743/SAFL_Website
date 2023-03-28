@@ -67,7 +67,7 @@ export default function Participants() {
     fetchData();
   }, []);
 
-  if (currentUser && teams) {
+  if (currentUser && currentUser.uid == process.env.NEXT_PUBLIC_ADMIN && teams) {
     const router = useRouter();
     const { country, gameName } = router.query;
 
@@ -83,7 +83,10 @@ export default function Participants() {
           <div className="flex justify-center ">
             <Searchbar setSearch={setSearch} />
           </div>
+          {teams && 
           <ParticipantsTable search={search} data={teams} />
+          
+          }
         </div>
       </>
     );
