@@ -1,6 +1,7 @@
-export default function DashboardRoomBossCard({ gameName }) {
-  const urlParams = new URLSearchParams({ name: gameName }).toString();
-  const url = "/admin/participants/country?" + urlParams;
+export default function BossGameCard({ gameName, roomName }) {
+  const url =
+    "/admin/participants?country=" + roomName + "&gameName=" + gameName;
+
   return (
     <div className="block w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
       <div className="flex justify-center items-center">
