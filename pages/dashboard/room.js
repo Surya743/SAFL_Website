@@ -55,7 +55,6 @@ const docRef = doc(db, "users", currentUser.uid);
   useEffect(() => {
     async function fetchData() {
       const urlSearchParams = new URLSearchParams(window.location.search)
-      // console.log(urlSearchParams)
       const roomName = urlSearchParams.get("name")
       setRoomNameParams(roomName)
       try {
@@ -64,7 +63,6 @@ const docRef = doc(db, "users", currentUser.uid);
      
         if (docSnap.exists()) {
           const data = docSnap.data();
-          // console.log(data);
           setUserData(data)
           setTeamName(data.teamName);
           setRoomData(data.roomDetails);
@@ -76,12 +74,13 @@ const docRef = doc(db, "users", currentUser.uid);
             }
 
             room.games.map((game) => {
-              // console.log(game);
-              if (game.name == "bossGame")
-                return <DashboardRoomBossCard details={game} />;
+
+              
+
+
+             
             });
           })
-          // console.log(roomStartedStatus)  
 
 
         }
@@ -97,7 +96,6 @@ const docRef = doc(db, "users", currentUser.uid);
     const router = useRouter();
     const { name } = router.query;
     console.log(router.query);
-    // console.log(roomData)
 
     return teamName && (
       <>
@@ -125,7 +123,6 @@ const docRef = doc(db, "users", currentUser.uid);
                     if (room.roomName == name) {
                       return (
                         <RoomStatusCard
-                          // status = {}
                           roomHealth={room.roomHealth}
                           roomPoints={room.roomPoints}
                         />
@@ -160,7 +157,6 @@ const docRef = doc(db, "users", currentUser.uid);
                     {roomData.map((room) => {
                       if (room.roomName == name) {
                         return room.games.map((game) => {
-                          // console.log(game);
                           if (game.name != "bossGame")
                             return <DashboardRoomQuestCard details={game} completed={game.completed} />;
                         });
@@ -173,9 +169,7 @@ const docRef = doc(db, "users", currentUser.uid);
               <>
                 <div className="flex justify-center py-12">
                   <div>
-                    {/* {() => {
-                      return <RoomParagraph description={"Hello"} />;
-                    }} */}
+                    
                     <RoomParagraph roomName={name}/>
                   </div>
                 </div>

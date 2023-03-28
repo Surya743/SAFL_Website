@@ -17,8 +17,11 @@ export default function Login() {
     try {
       setLoading(true);
       const resp = await login(data.email, data.password);
-      if (resp) {
+      if (resp.user.uid != process.env.NEXT_PUBLIC_ADMIN) {
         router.push("/dashboard");
+      }
+      else{
+        router.push("/admin")
       }
     } catch (error) {
       setLoading(false);
@@ -61,8 +64,10 @@ export default function Login() {
           data.mobileNumber
         );
         if (resp) {
+          // console.log(resp)
           router.push("/dashboard");
         }
+        
       } catch (error) {
         setLoading(false);
         if (error.message == "Firebase: Error (auth/email-already-in-use).") {

@@ -1,37 +1,11 @@
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
 import { useAuth } from "@/context/AuthContext";
-import { doc, getDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { db } from "../../firebase";
 import DashboardFooter from "@/components/DashboardComponents/DashboardFooter";
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
 import AdminRoomCards from "@/components/AdminComponents/AdminRoomCards";
 
 export default function AdminDashboard() {
   const { currentUser } = useAuth();
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const docRef = doc(db, "users", currentUser.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setTeamName(data.teamName);
-          setRoomData(data.roomDetails);
-          // console.log(roomData);
-          // console.log(roomData);
-          data.roomDetails.map((room) => {
-            
-          });
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    fetchData();
-  }, []);
 
   if (currentUser) {
     return (
