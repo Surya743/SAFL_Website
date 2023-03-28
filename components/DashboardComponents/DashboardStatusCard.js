@@ -7,7 +7,7 @@ export default function DashboardStatusCard({ totalPoints, totalHealth }) {
 
       <div className="w-full mt-4 bg-gray-200 rounded-full h-4">
         <div
-          className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs font-medium text-center p-0.5 leading-none h-4 rounded-full"
+          className="text-red-300 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs font-medium text-center p-0.5 leading-none h-4 rounded-full"
           style={{ width: "45%" }}
         >
           45%
