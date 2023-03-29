@@ -2,7 +2,7 @@ export default function RoomStatusCard({
   roomHealth,
   roomPoints,
   completedGames,
-  totalGamesCount,
+  roomGamesCount,
 }) {
   return (
     <div className="block w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
@@ -13,9 +13,9 @@ export default function RoomStatusCard({
       <div className="w-full mt-4 bg-gray-200 rounded-full h-4">
         <div
           className="text-red-300 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs font-medium text-center p-0.5 leading-none h-4 rounded-full"
-          style={{ width: `${(completedGames / totalGamesCount) * 100}%` }}
+          style={{ width: `${(completedGames / roomGamesCount) * 100}%` }}
         >
-          {(completedGames / totalGamesCount) * 100}%
+          {parseInt((completedGames / roomGamesCount) * 100)}%
         </div>
       </div>
 

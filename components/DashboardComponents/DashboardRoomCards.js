@@ -6,7 +6,9 @@ export default function DashboardRoomCards({
   roomTime,
   roomStarted,
   roomCompleted,
-  roomEndTime
+  roomEndTime,
+  roomGamesCount,
+  roomCompletedGamesCount,
 }) {
   const urlParams = new URLSearchParams({ name: roomName }).toString();
   const room = "/dashboard/room?" + urlParams;
@@ -22,9 +24,11 @@ export default function DashboardRoomCards({
         <div className="w-full mt-4 bg-gray-200 rounded-full h-4">
           <div
             className="text-red-300 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs font-medium text-center p-0.5 leading-none h-4 rounded-full"
-            style={{ width: "45%" }}
+            style={{
+              width: `${(roomCompletedGamesCount / roomGamesCount) * 100}%`,
+            }}
           >
-            45%
+            {parseInt((roomCompletedGamesCount / roomGamesCount) * 100)}%
           </div>
         </div>
 
@@ -80,31 +84,26 @@ export default function DashboardRoomCards({
 
           <div className="mb-1 text-base font-medium text-purple-800">
             Time taken to complete room:
-            {roomStarted && !roomCompleted &&
-            <Timer time = {Date.now() - roomTime}/> 
-           
-              
-            } 
-            {!roomStarted &&
-            <>
-             <span> {" "}</span>
-            <span>Room not started</span></> 
-           
-            }
-           {roomCompleted && 
-           <>
-           <span> {" "}</span>
-           <Timer time = {roomEndTime - roomTime}/> 
-
-          </>
-           }
-            
+            {roomStarted && !roomCompleted && (
+              <Timer time={Date.now() - roomTime} />
+            )}
+            {!roomStarted && (
+              <>
+                <span> </span>
+                <span>Room not started</span>
+              </>
+            )}
+            {roomCompleted && (
+              <>
+                <span> </span>
+                <Timer time={roomEndTime - roomTime} />
+              </>
+            )}
           </div>
         </div>
 
         <div className="flex justify-center pt-6">
           <a
-          
             href={room}
             className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
