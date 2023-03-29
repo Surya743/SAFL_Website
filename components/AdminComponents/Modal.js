@@ -12,6 +12,7 @@ export default function Modal({ open, setOpen, user,setAlert }) {
     formState: { errors },
   } = useForm();
   const onSubmit = async (modalData) => {
+    setOpen(false)
     console.log(modalData);
     console.log("test");
     try {
@@ -28,6 +29,11 @@ export default function Modal({ open, setOpen, user,setAlert }) {
         console.log("here!!!")
         const data = docSnap.data();
         console.log(data)
+        let gamePoints = 0;
+        let gameHealth = 0;
+        let gameCompleted = false;
+
+
         let temp = data.roomDetails.map((room) => {
           if (room.roomName == country) {
             room.roomPoints += parseInt(modalData.points);
@@ -35,8 +41,11 @@ export default function Modal({ open, setOpen, user,setAlert }) {
             room.games.map((game) => {
               if (game.name == gameName) {
                 game.points = parseInt(game.points) + parseInt(modalData.points);
+                gamePoints = game.points
                 game.health = parseInt(game.health) + parseInt(modalData.health);
+                gameHealth = game.health
                 game.completed = Boolean(modalData.completion);
+                gameCompleted = game.completed
               }
               return game;
             });
@@ -45,14 +54,14 @@ export default function Modal({ open, setOpen, user,setAlert }) {
         });
         console.log(temp)
         let totalPoints = parseInt(data.totalPoints) + parseInt(modalData.points);
-        let totalHealth = parseInt(data.totalHealth) + modalData.health;
+        let totalHealth = parseInt(data.totalHealth) + parseInt(modalData.health);
         await updateDoc(docRef, {
           roomDetails: temp,
           totalHealth : totalHealth,
           totalPoints : totalPoints,
           currency : totalPoints * 0.5 * totalHealth
         })
-        setAlert(true)
+        setAlert(gamePoints,gameHealth,gameCompleted)
         
 
       }
@@ -151,7 +160,6 @@ export default function Modal({ open, setOpen, user,setAlert }) {
                     <button
                       type="submit"
                       className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-2"
-                      onClick={() => setOpen(false)}
                     >
                       Submit
                     </button>
