@@ -8,6 +8,7 @@ import DashboardFooter from "@/components/DashboardComponents/DashboardFooter";
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
 import GameCards from "@/components/AdminComponents/GameCards";
 import BossGameCard from "@/components/AdminComponents/BossGameCard";
+import AdminNavbar from "@/components/AdminComponents/AdminNavbar";
 
 export default function Participants() {
   const { currentUser } = useAuth();
@@ -38,8 +39,8 @@ export default function Participants() {
     const { country } = router.query;
     return (
       <>
-        <div className="bg-violet-200 ">
-          <DashboardNavbar />
+        <div className="bg-violet-200 min-h-screen ">
+          <AdminNavbar/>
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
               {country.charAt(0).toUpperCase() + country.slice(1)}

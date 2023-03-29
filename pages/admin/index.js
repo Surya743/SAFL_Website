@@ -3,6 +3,7 @@ import { useAuth } from "@/context/AuthContext";
 import DashboardFooter from "@/components/DashboardComponents/DashboardFooter";
 import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
 import AdminRoomCards from "@/components/AdminComponents/AdminRoomCards";
+import AdminNavbar from "@/components/AdminComponents/AdminNavbar";
 
 export default function AdminDashboard() {
   const { currentUser } = useAuth();
@@ -11,7 +12,7 @@ export default function AdminDashboard() {
     return (
       <>
         <div className="bg-violet-200 ">
-          <DashboardNavbar />
+          <AdminNavbar/>
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <div>
               <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
