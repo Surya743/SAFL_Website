@@ -11,7 +11,7 @@ import { db } from "../../firebase";
 
 export default function DashboardRoom() {
   const { currentUser } = useAuth();
-  // console.log(currentUser)
+  // (currentUser)
   const [loading, isLoading] = useState(false);
   const [roomData, setRoomData] = useState([]);
   const [teamName, setTeamName] = useState("");
@@ -27,7 +27,7 @@ export default function DashboardRoom() {
   const getRoomCount = (roomDetails) => {
     let tempGameCount = 0;
     let tempGameCompletedCount = 0;
-    console.log(roomDetails);
+    (roomDetails);
 
     roomDetails.games.map((game) => {
       tempGameCount += 1;
@@ -61,7 +61,7 @@ export default function DashboardRoom() {
           setTotalHealth(totalHealthtemp);
 
           data.roomDetails.map((room) => {
-            console.log(room);
+            (room);
             room.games.map((game) => {
               setTotalGamesCount((count) => count + 1);
               if (game.completed == true) {
@@ -79,8 +79,8 @@ export default function DashboardRoom() {
     fetchData();
   }, []);
   if (currentUser && teamName) {
-    console.log(roomGamesCount);
-    console.log(roomCompletedGamesCount);
+    (roomGamesCount);
+    (roomCompletedGamesCount);
     return (
       <>
         <div className="bg-violet-200 ">

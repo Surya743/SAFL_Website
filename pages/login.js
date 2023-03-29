@@ -63,7 +63,7 @@ export default function Login() {
           data.mobileNumber
         );
         if (resp) {
-          // console.log(resp)
+          // (resp)
           router.push("/dashboard");
         }
       } catch (error) {

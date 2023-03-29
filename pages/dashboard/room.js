@@ -59,7 +59,7 @@ export default function DashboardRoom() {
           setRoomData(data.roomDetails);
           data.roomDetails.map((room) => {
             if (room.roomName == roomName) {
-              console.log(room);
+              (room);
               setStarted(room.roomStarted);
               room.games.map((game) => {
                 setRoomGamesCount((count) => count + 1);
@@ -81,7 +81,7 @@ export default function DashboardRoom() {
   if (currentUser) {
     const router = useRouter();
     const { name } = router.query;
-    console.log(router.query);
+    (router.query);
 
     return (
       teamName && (
@@ -128,7 +128,7 @@ export default function DashboardRoom() {
                     {roomData.map((room) => {
                       if (room.roomName == name) {
                         return room.games.map((game) => {
-                          // console.log(game);
+                          // (game);
                           if (game.name == "bossGame")
                             return (
                               <DashboardRoomBossCard

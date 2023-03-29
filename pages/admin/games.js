@@ -20,7 +20,7 @@ export default function Participants() {
         const docRef = doc(db, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
         const params = new URLSearchParams(window.location.search);
-        console.log(params);
+        (params);
         if (docSnap.exists()) {
           const data = docSnap.data();
           setRoomData(data.roomDetails);
@@ -55,7 +55,7 @@ export default function Participants() {
             {roomData.map((room) => {
               if (room.roomName == country) {
                 return room.games.map((game) => {
-                  console.log(game);
+                  (game);
                   if (game.name == "bossGame")
                     return (
                       <BossGameCard gameName={game.name} roomName={country} />

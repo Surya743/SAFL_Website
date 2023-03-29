@@ -28,7 +28,7 @@ export default function ParticipantsTable({ search, data }) {
   }
 
   const handleModal = (team) => {
-    console.log(team)
+    (team)
     setModalInfo(team)
     setOpen(true)
   }
