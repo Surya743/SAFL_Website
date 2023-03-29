@@ -5,10 +5,13 @@ import Modal from "@/components/AdminComponents/Modal";
 import UpdatedAlert from "../Alerts/UpdatedAlert";
 
 export default function ParticipantsTable({ search, data }) {
-  const [open, setOpen] = useState(false);
   const [updated,setUpdated] = useState(false);
+  const [showModal,setShowModal] = useState(false);
+  const [modalInfo,setModalInfo] = useState({})
+  const [open, setOpen] = useState(false);
 
-  function setAlert(uid){
+
+  function setAlert(gamePoints,gameHealth,gameCompleted){
 
     setUpdated(true);
     setTimeout(() => {
@@ -16,9 +19,27 @@ export default function ParticipantsTable({ search, data }) {
     }, 3000);
 
     data.map(team => {
-
+      if(team.uid == modalInfo.uid){
+        team.gamePoints = gamePoints
+        team.gameHealth = gameHealth
+        team.gameCompleted = gameCompleted
+      }
+      return team
     })
   }
+
+  const handleModal = (team) => {
+    console.log(team)
+    setModalInfo(team)
+    setOpen(true)
+    setShowModal(true)
+  }
+
+
+const ModalContent = () => {
+  // setOpen(true)
+  return <Modal open={open} setOpen={setOpen}  user={modalInfo} setAlert={setAlert}/>
+}
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
@@ -30,7 +51,9 @@ export default function ParticipantsTable({ search, data }) {
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-
+              {showModal &&
+              <ModalContent/>
+              }
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-200">
                   <tr>
@@ -77,12 +100,7 @@ export default function ParticipantsTable({ search, data }) {
                       <>
                      
                         <tbody className="divide-y divide-gray-200 bg-white">
-                          <tr className="hidden">
-                            <td>
-                             <Modal open={open} setOpen={setOpen} user={team} setAlert={setAlert} />
-
-                            </td>
-                          </tr>
+                          
                         <tr className="hover:bg-gray-100" key={team.uid}>
                           <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                             {team.teamName}
@@ -101,7 +119,9 @@ export default function ParticipantsTable({ search, data }) {
                             <a
                               
                               className="text-indigo-600 hover:text-indigo-900"
-                              onClick={() => setOpen(true)}
+                              onClick={() => {
+                                  handleModal(team)
+                              }}
                             >
                               Edit{" "}
                               <span className="sr-only">, {team.teamName}</span>
