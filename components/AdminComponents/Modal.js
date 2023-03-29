@@ -1,8 +1,10 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
+import { doc, getDoc,updateDoc } from "firebase/firestore";
+import { db } from "../../firebase";
+export default function Modal({ open, setOpen, user,setAlert }) {
 
-export default function Modal({ open, setOpen, user }) {
   const {
     register,
     handleSubmit,
@@ -13,38 +15,46 @@ export default function Modal({ open, setOpen, user }) {
     console.log(modalData);
     console.log("test");
     try {
+      console.log(user.uid)
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
       const urlSearchParams = new URLSearchParams(window.location.search);
       const country = urlSearchParams.get("country");
       const gameName = urlSearchParams.get("gameName");
+
+
       if (docSnap.exists()) {
+
+        console.log("here!!!")
         const data = docSnap.data();
-        let temp = userData.roomDetails.map((room) => {
+        console.log(data)
+        let temp = data.roomDetails.map((room) => {
           if (room.roomName == country) {
-            room.roomPoints += modalData.points;
-            room.roomHealth += modalData.health;
-            return room.games.map((game) => {
+            room.roomPoints += parseInt(modalData.points);
+            room.roomHealth += parseInt(modalData.health);
+            room.games.map((game) => {
               if (game.name == gameName) {
-                game.points = game.points + modalData.points;
-                game.health = game.health + modalData.health;
-                game.completed = modalData.completion;
+                game.points = parseInt(game.points) + parseInt(modalData.points);
+                game.health = parseInt(game.health) + parseInt(modalData.health);
+                game.completed = Boolean(modalData.completion);
               }
               return game;
             });
           }
           return room;
         });
-        let totalPoints = data.totalPoints + modalData.points;
-        let totalHealth = data.totalHealth + modalData.health;
+        console.log(temp)
+        let totalPoints = parseInt(data.totalPoints) + parseInt(modalData.points);
+        let totalHealth = parseInt(data.totalHealth) + modalData.health;
         await updateDoc(docRef, {
           roomDetails: temp,
-          totalPoints: totalPoints,
-          totalHealth: totalHealth,
-        }).then((event) => {
-          console.log(event);
-        });
-        setRoomData(data.roomDetails);
+          totalHealth : totalHealth,
+          totalPoints : totalPoints,
+          currency : totalPoints * 0.5 * totalHealth
+        })
+        setAlert(true)
+        
+
       }
     } catch (error) {
       console.log(error);
@@ -54,6 +64,7 @@ export default function Modal({ open, setOpen, user }) {
   const cancelButtonRef = useRef(null);
 
   return (
+    <>
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
@@ -86,10 +97,9 @@ export default function Modal({ open, setOpen, user }) {
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 w-80">
-                    <div className="sm:flex sm:items-start">
-                      <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <div className="grid gap-6 mb-6 flex flex-row justify-center">
+                  
+                  <div className="bg-white px-4 pb-3 px-6 justify-center">
+                  <div className=" py-6 grid gap-6 mb-6 flex flex-row justify-center">
                           <div>
                             <label
                               htmlFor="points"
@@ -98,10 +108,8 @@ export default function Modal({ open, setOpen, user }) {
                               Add Points
                             </label>
                             <input
-                              type="number"
                               id="points"
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
-                              placeholder="0"
                               {...register("points")}
                             />
                           </div>
@@ -113,10 +121,8 @@ export default function Modal({ open, setOpen, user }) {
                               Add Health
                             </label>
                             <input
-                              type="number"
                               id="health"
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
-                              placeholder="0"
                               {...register("health")}
                             />
                           </div>
@@ -133,11 +139,8 @@ export default function Modal({ open, setOpen, user }) {
                             </span>
                           </label>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 px-4 pb-3 flex flex-row-reverse px-6 justify-center">
-                    <button
+    <div className="bg-white px-4 pb-3 px-6 flex flex-row-reverse justify-center">
+    <button
                       type="button"
                       className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center ml-3 mb-2"
                       onClick={() => setOpen(false)}
@@ -152,6 +155,8 @@ export default function Modal({ open, setOpen, user }) {
                     >
                       Submit
                     </button>
+    </div>
+                    
                   </div>
                 </form>
               </Dialog.Panel>
@@ -160,5 +165,6 @@ export default function Modal({ open, setOpen, user }) {
         </div>
       </Dialog>
     </Transition.Root>
+    </>
   );
 }

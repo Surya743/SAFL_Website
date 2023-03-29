@@ -16,6 +16,7 @@ import DashboardNavbar from "@/components/DashboardComponents/DashboardNavbar";
 import ParticipantsTable from "@/components/AdminComponents/ParticipantsTable";
 import Searchbar from "@/components/AdminComponents/Searchbar";
 import TablePagination from "@/components/AdminComponents/TablePagination";
+import AdminNavbar from "@/components/AdminComponents/AdminNavbar";
 
 export default function Participants() {
   const { currentUser } = useAuth();
@@ -74,7 +75,7 @@ export default function Participants() {
     return (
       <>
         <div className="bg-violet-200 min-h-screen">
-          <DashboardNavbar />
+          <AdminNavbar/>
           <div className="flex mx-8 my-8 lg:mt-16 lg:mx-20 justify-center">
             <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
               {gameName} ({country.charAt(0).toUpperCase() + country.slice(1)})
