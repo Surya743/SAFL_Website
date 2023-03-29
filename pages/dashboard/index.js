@@ -51,8 +51,8 @@ export default function DashboardRoom() {
           const data = docSnap.data();
           setTeamName(data.teamName);
           setRoomData(data.roomDetails);
-          let totalPointstemp = 0;
-          let totalHealthtemp = 0;
+          let totalPointstemp = data.totalPoints;
+          let totalHealthtemp = data.totalHealth;
           data.roomDetails.map((room) => {
             totalPointstemp = totalPointstemp + room.roomPoints;
             totalHealthtemp = totalHealthtemp + room.roomHealth;

@@ -1,5 +1,5 @@
 export default function DashboardRoomBossCard(props) {
-  const isCompleted = false;
+  const isCompleted = props.completed;
   return (
     <div className="block w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
       <div className="flex justify-center items-center">
