@@ -19,7 +19,7 @@ export default function DashboardRoom() {
   const [roomData, setRoomData] = useState([]);
   const [userData, setUserData] = useState({});
   const [roomNameParam, setRoomNameParams] = useState("");
-  const [totalGamesCount, setTotalGamesCount] = useState(0);
+  const [roomGamesCount, setRoomGamesCount] = useState(0);
   const [completedGamesCount, setCompletedGamesCount] = useState(0);
 
   async function startRoom() {
@@ -61,14 +61,13 @@ export default function DashboardRoom() {
             if (room.roomName == roomName) {
               console.log(room);
               setStarted(room.roomStarted);
+              room.games.map((game) => {
+                setRoomGamesCount((count) => count + 1);
+                if (game.completed == true) {
+                  setCompletedGamesCount((count) => count + 1);
+                }
+              });
             }
-
-            room.games.map((game) => {
-              setTotalGamesCount((count) => count + 1);
-              if (game.completed == true) {
-                setCompletedGamesCount((count) => count + 1);
-              }
-            });
           });
         }
       } catch (error) {
@@ -114,7 +113,7 @@ export default function DashboardRoom() {
                             roomHealth={room.roomHealth}
                             roomPoints={room.roomPoints}
                             completedGames={completedGamesCount}
-                            totalGamesCount={totalGamesCount}
+                            roomGamesCount={roomGamesCount}
                           />
                         );
                       }
