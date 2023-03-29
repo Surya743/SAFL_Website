@@ -11,7 +11,7 @@ import { db } from "../../firebase";
 
 export default function DashboardRoom() {
   const { currentUser } = useAuth();
-  // (currentUser)
+  // console.log(currentUser)
   const [loading, isLoading] = useState(false);
   const [roomData, setRoomData] = useState([]);
   const [teamName, setTeamName] = useState("");
@@ -61,7 +61,6 @@ export default function DashboardRoom() {
           setTotalHealth(totalHealthtemp);
 
           data.roomDetails.map((room) => {
-            (room);
             room.games.map((game) => {
               setTotalGamesCount((count) => count + 1);
               if (game.completed == true) {
@@ -79,8 +78,7 @@ export default function DashboardRoom() {
     fetchData();
   }, []);
   if (currentUser && teamName) {
-    (roomGamesCount);
-    (roomCompletedGamesCount);
+
     return (
       <>
         <div className="bg-violet-200 ">
