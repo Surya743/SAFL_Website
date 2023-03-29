@@ -13,7 +13,7 @@ export default function RoomParagraph({ roomName }) {
           const data = docSnapDesc.data();
           setDescription(data.roomDescription);
         } else {
-          console.log("Doesn't exist");
+          ("Doesn't exist");
         }
       } catch (error) {
         console.log(error);

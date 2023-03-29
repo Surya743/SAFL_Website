@@ -13,10 +13,10 @@ export default function Modal({ open, setOpen, user,setAlert }) {
   } = useForm();
   const onSubmit = async (modalData) => {
     setOpen(false)
-    console.log(modalData);
-    console.log("test");
+    (modalData);
+    ("test");
     try {
-      console.log(user.uid)
+      (user.uid)
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
       const urlSearchParams = new URLSearchParams(window.location.search);
@@ -26,9 +26,9 @@ export default function Modal({ open, setOpen, user,setAlert }) {
 
       if (docSnap.exists()) {
 
-        console.log("here!!!")
+        ("here!!!")
         const data = docSnap.data();
-        console.log(data)
+        (data)
         let gamePoints = 0;
         let gameHealth = 0;
         let gameCompleted = false;
@@ -52,7 +52,7 @@ export default function Modal({ open, setOpen, user,setAlert }) {
           }
           return room;
         });
-        console.log(temp)
+        (temp)
         let totalPoints = parseInt(data.totalPoints) + parseInt(modalData.points);
         let totalHealth = parseInt(data.totalHealth) + parseInt(modalData.health);
         await updateDoc(docRef, {

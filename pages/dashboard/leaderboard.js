@@ -26,7 +26,7 @@ export default function Leaderboard() {
           orderBy("totalPoints", "desc")
         );
         const documentSnapshots = await getDocs(documentQuery);
-        console.log(documentSnapshots.docs);
+        (documentSnapshots.docs);
         setTeams(documentSnapshots.docs);
       } catch (error) {
         console.log(error);
