@@ -2,16 +2,35 @@ import { useState } from "react";
 import { db } from "../../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import Modal from "@/components/AdminComponents/Modal";
+import UpdatedAlert from "../Alerts/UpdatedAlert";
 
 export default function ParticipantsTable({ search, data }) {
   const [open, setOpen] = useState(false);
+  const [updated,setUpdated] = useState(false);
+
+  function setAlert(uid){
+
+    setUpdated(true);
+    setTimeout(() => {
+      setUpdated(false);
+    }, 3000);
+
+    data.map(team => {
+
+    })
+  }
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
+      {updated &&
+      <UpdatedAlert show={updated} setShow={setUpdated}/>
+
+      }
       <div className="mt-8 flex flex-col">
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-200">
                   <tr>
@@ -47,7 +66,7 @@ export default function ParticipantsTable({ search, data }) {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200 bg-white">
+               
                   {data
                     .filter((item) => {
                       return search.toLowerCase() === ""
@@ -56,7 +75,14 @@ export default function ParticipantsTable({ search, data }) {
                     })
                     .map((team) => (
                       <>
-                        <Modal open={open} setOpen={setOpen} user={team} />
+                     
+                        <tbody className="divide-y divide-gray-200 bg-white">
+                          <tr className="hidden">
+                            <td>
+                             <Modal open={open} setOpen={setOpen} user={team} setAlert={setAlert} />
+
+                            </td>
+                          </tr>
                         <tr className="hover:bg-gray-100" key={team.uid}>
                           <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                             {team.teamName}
@@ -73,9 +99,7 @@ export default function ParticipantsTable({ search, data }) {
                           </td>
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-left text-sm font-medium sm:pr-6">
                             <a
-                              data-modal-target="defaultModal"
-                              data-modal-toggle="defaultModal"
-                              href="#"
+                              
                               className="text-indigo-600 hover:text-indigo-900"
                               onClick={() => setOpen(true)}
                             >
@@ -84,9 +108,10 @@ export default function ParticipantsTable({ search, data }) {
                             </a>
                           </td>
                         </tr>
+                </tbody>
+
                       </>
                     ))}
-                </tbody>
               </table>
             </div>
           </div>
