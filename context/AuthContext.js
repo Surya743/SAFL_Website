@@ -107,38 +107,32 @@ export function AuthProvider({ children }) {
                 endTime: 0,
                 games: [
                   {
-                    name: "game1",
+                    name: "Whose Line is it Anyway? Hitler/Kanye?",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game2",
+                    name: "The Art of Balance",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game3",
+                    name: "Test of Fire",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game4",
-                    health: 0,
-                    points: 0,
-                    completed: false,
-                  },
-                  {
-                    name: "game5",
+                    name: "Zero-Knowledge Proof",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
                     bossGame: true,
-                    name: "bossGame",
+                    name: "To be or not to be",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -209,37 +203,44 @@ export function AuthProvider({ children }) {
 
                 games: [
                   {
-                    name: "game1",
+                    name: "Riddle Me Not",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game2",
+                    name: "Momos",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game3",
+                    name: "Yoga",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game4",
+                    name: "Crack The Code",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game5",
+                    name: "Back Stabbing",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "bossGame",
+                    name: "Herb Hunt",
+                    health: 0,
+                    points: 0,
+                    completed: false,
+                  },
+                  {
+                    bossGame: true,
+                    name: "Charades",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -247,7 +248,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
-                roomNo: "F208",
+                roomNo: "G206",
                 roomName: "spain",
                 roomCompletedStatus: false,
                 roomHealth: 0,
