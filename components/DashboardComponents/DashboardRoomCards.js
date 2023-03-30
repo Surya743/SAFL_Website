@@ -10,8 +10,33 @@ export default function DashboardRoomCards({
   roomGamesCount,
   roomCompletedGamesCount,
 }) {
+
+
+  function millisToMinutesAndSeconds(millis) {
+    let sec = Math.floor(millis / 1000);
+    let hrs = Math.floor(sec / 3600);
+    sec -= hrs * 3600;
+    let min = Math.floor(sec / 60);
+    sec -= min * 60;
+  
+    sec = '' + sec;
+    sec = ('00' + sec).substring(sec.length);
+  
+    if (hrs > 0) {
+      min = '' + min;
+      min = ('00' + min).substring(min.length);
+      return hrs + ":" + min + ":" + sec;
+    }
+    else {
+      return min + ":" + sec;
+    }
+  }
+
+
   const urlParams = new URLSearchParams({ name: roomName }).toString();
   const room = "/dashboard/room?" + urlParams;
+
+
   return (
     <div className="flex justify-center p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
       <div className="grow">
@@ -95,8 +120,8 @@ export default function DashboardRoomCards({
             )}
             {roomCompleted && (
               <>
-                <span> </span>
-                <Timer time={roomEndTime - roomTime} />
+                <span> {millisToMinutesAndSeconds(roomEndTime-roomTime)}</span>
+                
               </>
             )}
           </div>

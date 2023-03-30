@@ -28,6 +28,8 @@ export default function Modal({ open, setOpen, user,setAlert }) {
         let gamePoints = 0;
         let gameHealth = 0;
         let gameCompleted = false;
+        let totalGames = 0;
+        let totalGamesCompleted = 0;
 
 
         let temp = data.roomDetails.map((room) => {
@@ -42,9 +44,19 @@ export default function Modal({ open, setOpen, user,setAlert }) {
                 gameHealth = game.health
                 game.completed = Boolean(modalData.completion);
                 gameCompleted = game.completed
+                
               }
+              if(game.completed){
+                totalGamesCompleted+=1
+              }
+              totalGames+=1;
               return game;
             });
+            console.log(totalGames,totalGamesCompleted)
+            if(totalGamesCompleted == totalGames){
+              room.endTime = Date.now()
+              room.roomCompletedStatus = true
+            }
           }
           return room;
         });
@@ -54,7 +66,7 @@ export default function Modal({ open, setOpen, user,setAlert }) {
           roomDetails: temp,
           totalHealth : totalHealth,
           totalPoints : totalPoints,
-          currency : totalPoints * 0.5 * totalHealth
+          currency : totalPoints + (0.5 * totalHealth)
         })
         setAlert(gamePoints,gameHealth,gameCompleted)
         

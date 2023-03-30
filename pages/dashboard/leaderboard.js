@@ -23,7 +23,7 @@ export default function Leaderboard() {
         // Query the first page of docs
         const documentQuery = query(
           collection(db, "users"),
-          orderBy("totalPoints", "desc")
+          orderBy("currency", "desc")
         );
         const documentSnapshots = await getDocs(documentQuery);
         setTeams(documentSnapshots.docs);
@@ -94,7 +94,7 @@ export default function Leaderboard() {
                             {team.data().teamLeaderName}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {team.data().totalPoints}
+                            {team.data().currency}
                           </td>
                         </tr>
                       ))}
