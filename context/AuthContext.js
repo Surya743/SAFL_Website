@@ -41,6 +41,7 @@ export function AuthProvider({ children }) {
             currency: 1500,
             roomDetails: [
               {
+                roomNo: "F208",
                 roomName: "japan",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -51,37 +52,44 @@ export function AuthProvider({ children }) {
 
                 games: [
                   {
-                    name: "game1",
+                    name: "The Way of the Sword 1",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game2",
+                    name: "The Way of the Sword 2",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game3",
+                    name: "The Way of the Mirror",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game4",
+                    name: "The Way of the Lord",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game5",
+                    name: "Tea Ceremony",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "bossGame",
+                    name: "The Priest's Enlightenment",
+                    health: 0,
+                    points: 0,
+                    completed: false,
+                  },
+                  {
+                    bossGame: true,
+                    name: "???",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -89,6 +97,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "germany",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -128,6 +137,7 @@ export function AuthProvider({ children }) {
                     completed: false,
                   },
                   {
+                    bossGame: true,
                     name: "bossGame",
                     health: 0,
                     points: 0,
@@ -136,6 +146,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "france",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -147,37 +158,38 @@ export function AuthProvider({ children }) {
 
                 games: [
                   {
-                    name: "game1",
+                    name: "Speed Uno",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game2",
+                    name: "Split and Steal",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game3",
+                    name: "7 Up 7 Down",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game4",
+                    name: "Eiffel Tower",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game5",
+                    name: "Blackjack",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "bossGame",
+                    bossGame: true,
+                    name: "Roulette",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -185,6 +197,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "india",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -234,6 +247,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "spain",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -243,37 +257,38 @@ export function AuthProvider({ children }) {
                 endTime: 0,
                 games: [
                   {
-                    name: "game1",
+                    name: "Nerf Wars",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game2",
+                    name: "Castle Crumble",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game3",
+                    name: "Tower of Hanoi",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game4",
+                    name: "Foosball",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game5",
+                    name: "HeadsUp",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "bossGame",
+                    bossGame: true,
+                    name: "Senorita",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -281,6 +296,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "korea",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -292,37 +308,44 @@ export function AuthProvider({ children }) {
 
                 games: [
                   {
-                    name: "game1",
+                    name: "Guess The Drink",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game2",
+                    name: "Whisper Challenge",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game3",
+                    name: "Dancing in Heels",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game4",
+                    name: "Flirting with Jailers",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "game5",
+                    name: "Ottokae Song",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "bossGame",
+                    name: "Paper Folding",
+                    health: 0,
+                    points: 0,
+                    completed: false,
+                  },
+                  {
+                    bossGame: true,
+                    name: "Musical Chairs",
                     health: 0,
                     points: 0,
                     completed: false,

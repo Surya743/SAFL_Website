@@ -127,7 +127,7 @@ export default function DashboardRoom() {
                       if (room.roomName == name) {
                         return room.games.map((game) => {
                           // console.log(game);
-                          if (game.name == "bossGame")
+                          if (game.bossGame == true)
                             return (
                               <DashboardRoomBossCard
                                 details={game}
@@ -149,7 +149,7 @@ export default function DashboardRoom() {
                       {roomData.map((room) => {
                         if (room.roomName == name) {
                           return room.games.map((game) => {
-                            if (game.name != "bossGame")
+                            if (game.bossGame != true)
                               return (
                                 <DashboardRoomQuestCard
                                   details={game}

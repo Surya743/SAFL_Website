@@ -27,7 +27,7 @@ export default function DashboardRoom() {
   const getRoomCount = (roomDetails) => {
     let tempGameCount = 0;
     let tempGameCompletedCount = 0;
-    (roomDetails);
+    roomDetails;
 
     roomDetails.games.map((game) => {
       tempGameCount += 1;
@@ -78,7 +78,6 @@ export default function DashboardRoom() {
     fetchData();
   }, []);
   if (currentUser && teamName) {
-
     return (
       <>
         <div className="bg-violet-200 ">
@@ -116,6 +115,7 @@ export default function DashboardRoom() {
               {roomData.map((room) => {
                 return (
                   <DashboardRoomCards
+                    roomNo={room.roomNo}
                     roomName={room.roomName}
                     roomPoints={room.roomPoints}
                     roomHealth={room.roomHealth}
