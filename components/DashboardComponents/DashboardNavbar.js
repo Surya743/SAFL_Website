@@ -72,7 +72,7 @@ export default function DashboardNavbar() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <button onClick={() => {
             logout();
-            router.push("/login")
+            router.push("/")
 
             }} className="text-sm font-semibold leading-6 text-gray-900">
             Log Out <span aria-hidden="true">&rarr;</span>
@@ -155,7 +155,7 @@ export default function DashboardNavbar() {
                 <button
                 onClick={() => {
                   logout();
-                  router.push("/login")
+                  router.push("/")
       
                   }}
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"

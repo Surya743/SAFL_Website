@@ -9,7 +9,7 @@ export default function NotLoggedIn() {
             <p className="mt-6 text-base leading-7 text-gray-600">Sorry, you're not allowed to access this page. Please relogin !</p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
-                href="/login"
+                href="/"
                 className="rounded-md bg-violet-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-violet-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
               >
                 Login
