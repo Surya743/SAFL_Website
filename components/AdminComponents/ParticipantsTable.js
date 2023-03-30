@@ -90,7 +90,9 @@ const ModalContent = () => {
                     .filter((item) => {
                       return search.toLowerCase() === ""
                         ? item
-                        : item.teamName.toLowerCase().includes(search);
+                        : item.teamName.toLowerCase().includes(search.toLowerCase());
+                      
+
                     })
                     .map((team) => (
                       <>
