@@ -39,7 +39,7 @@ export default function AdminDashboard() {
               <AdminRoomCards roomNo="F208" roomName="japan" />
               <AdminRoomCards roomNo="F208" roomName="germany" />
               <AdminRoomCards roomNo="F208" roomName="korea" />
-              <AdminRoomCards roomNo="F208" roomName="spain" />
+              <AdminRoomCards roomNo="G206" roomName="spain" />
               <AdminRoomCards roomNo="F208" roomName="france" />
               <AdminRoomCards roomNo="F208" roomName="india" />
             </div>
