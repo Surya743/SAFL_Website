@@ -39,7 +39,7 @@ export default function Participants() {
     return (
       <>
         <div className="bg-violet-200 min-h-screen ">
-          <AdminNavbar/>
+          <AdminNavbar />
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
               {country.charAt(0).toUpperCase() + country.slice(1)}
@@ -54,7 +54,7 @@ export default function Participants() {
             {roomData.map((room) => {
               if (room.roomName == country) {
                 return room.games.map((game) => {
-                  if (game.name == "bossGame")
+                  if (game.bossGame == true)
                     return (
                       <BossGameCard gameName={game.name} roomName={country} />
                     );
@@ -72,7 +72,7 @@ export default function Participants() {
               {roomData.map((room) => {
                 if (room.roomName == country) {
                   return room.games.map((game) => {
-                    if (game.name != "bossGame")
+                    if (game.bossGame != true)
                       return (
                         <GameCards gameName={game.name} roomName={country} />
                       );
