@@ -1,301 +1,401 @@
 import { useState } from "react";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useForm } from "react-hook-form";
+import { useAuth } from "@/context/AuthContext";
+import LoginFailedAlert from "@/components/Alerts/LoginFailedAlert";
+import { useRouter } from "next/router";
 
-const navigation = [
-  { name: "About", href: "#" },
-  { name: "Pearl", href: "#" },
-];
+export default function Login() {
+  const [loginUser, setLoginUser] = useState(true);
+  const router = useRouter();
+  const [registerUser, setRegisterUser] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { register, handleSubmit } = useForm();
+  const { login, signup } = useAuth();
+  async function handleLogin(data) {
+    try {
+      setLoading(true);
+      const resp = await login(data.email, data.password);
+      if (resp.user.uid != process.env.NEXT_PUBLIC_ADMIN) {
+        router.push("/dashboard");
+      } else {
+        router.push("/admin");
+      }
+    } catch (error) {
+      setLoading(false);
+      if (error.message == "Firebase: Error (auth/wrong-password).") {
+        setErrorMessage("Password entered was incorrect!");
+        setError(true);
+        setTimeout(() => {
+          setError(false);
+        }, 5000);
+      } else if (
+        error.message ==
+        "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests)."
+      ) {
+        setErrorMessage(
+          "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later."
+        );
+        setError(true);
+        setTimeout(() => {
+          setError(false);
+        }, 5000);
+      } else if (error.message == "Firebase: Error (auth/user-not-found).") {
+        setErrorMessage("Account does not exist! Please register.");
+        setError(true);
+        setTimeout(() => {
+          setError(false);
+        }, 5000);
+      }
+    }
+  }
 
-const people = [
-  {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  // More people...
-];
-export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  async function handleRegister(data) {
+    if (data.password === data.confirm_password) {
+      try {
+        setLoading(true);
+        const resp = await signup(
+          data.email,
+          data.password,
+          data.teamName,
+          data.teamLeaderName,
+          data.mobileNumber
+        );
+        if (resp) {
+          // (resp)
+          router.push("/dashboard");
+        }
+      } catch (error) {
+        setLoading(false);
+        if (error.message == "Firebase: Error (auth/email-already-in-use).") {
+          setErrorMessage("Account already exists please login!");
+          setError(true);
+          setTimeout(() => {
+            setError(false);
+          }, 5000);
+        } else if (
+          error.message ==
+          "Firebase: Password should be at least 6 characters (auth/weak-password)."
+        ) {
+          setErrorMessage("Password should be at least 6 characters");
+          setError(true);
+          setTimeout(() => {
+            setError(false);
+          }, 5000);
+        }
+        console.log(error.message);
+      }
+    } else {
+      setErrorMessage("Password and confirm password do not match!");
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 5000);
+    }
+  }
 
   return (
-    <div className="isolate bg-white">
-      <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
-        <svg
-          className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
-          viewBox="0 0 1155 678"
-        >
-          <path
-            fill="url(#45de2b6b-92d5-4d68-a6a0-9b9b2abad533)"
-            fillOpacity=".3"
-            d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
-          />
-          <defs>
-            <linearGradient
-              id="45de2b6b-92d5-4d68-a6a0-9b9b2abad533"
-              x1="1155.49"
-              x2="-78.208"
-              y1=".177"
-              y2="474.645"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#9089FC" />
-              <stop offset={1} stopColor="#FF80B5" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-      <div className="px-6 pt-6 lg:px-8">
-        <nav className="flex items-center justify-between" aria-label="Global">
-          <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">SAFL</span>
-              <img
-                className="h-8"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
-            </a>
-          </div>
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href="#"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </nav>
-        <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-          <Dialog.Panel className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden">
-            <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">SAFL</span>
+    <>
+      <div className="min-h-screen flex">
+        <div className="bg-violet-200 flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+          {error && (
+            <div className="flex justify-center -translate-y-12">
+              <LoginFailedAlert message={errorMessage} />
+            </div>
+          )}
+
+          {loginUser && !loading && (
+            <div className="mx-auto w-full max-w-sm lg:w-96">
+              <div>
                 <img
-                  className="h-8"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
+                  className="h-12 w-auto"
+                  src="/safl_logo.png"
+                  alt="Workflow"
                 />
-              </a>
-              <button
-                type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
-            </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-                <div className="py-6">
+                <h2 className="mt-6 text-3xl font-extrabold text-violet-900">
+                  Sign in to your account
+                </h2>
+                <p className="mt-2 text-lg text-violet-600">
+                  Or{" "}
                   <a
-                    href="#"
-                    className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                    onClick={() => {
+                      setLoginUser(false);
+                      setRegisterUser(true);
+                    }}
+                    className="text-violet-600 hover:text-violet-400"
                   >
-                    Log in
+                    click here to register
                   </a>
-                </div>
+                </p>
               </div>
-            </div>
-          </Dialog.Panel>
-        </Dialog>
-      </div>
-      <main>
-        <div className="relative px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div className="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                Announcing our next round of funding.{" "}
-                <a href="#" className="font-semibold text-indigo-600">
-                  <span className="absolute inset-0" aria-hidden="true" />
-                  Read more <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
-            </div>
-            <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Data to enrich your online business
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                fugiat aliqua.
-              </p>
-              <div className="mt-10 flex items-center justify-center gap-x-6">
-                <a
-                  href="#"
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Get started
-                </a>
-                <a
-                  href="#"
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Learn more <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-          </div>
 
-          <div className="">
-            <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
-              <div className="space-y-12">
-                <div className="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-                  <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-                    Our Team
-                  </h2>
-                  <p className="text-xl text-gray-500">
-                    Odio nisi, lectus dis nulla. Ultrices maecenas vitae rutrum
-                    dolor ultricies donec risus sodales. Tempus quis et.
-                  </p>
-                </div>
-                <ul
-                  role="list"
-                  className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8"
-                >
-                  {people.map((person) => (
-                    <li key={person.name}>
-                      <div className="space-y-4">
-                        <div className="aspect-w-3 aspect-h-2">
-                          <img
-                            className="object-cover shadow-lg rounded-lg"
-                            src={person.imageUrl}
-                            alt=""
-                          />
-                        </div>
-
-                        <div className="space-y-2">
-                          <div className="text-lg leading-6 font-medium space-y-1">
-                            <h3>{person.name}</h3>
-                            <p className="text-indigo-600">{person.role}</p>
-                          </div>
-                          <ul role="list" className="flex space-x-5">
-                            <li>
-                              <a
-                                href={person.twitterUrl}
-                                className="text-gray-400 hover:text-gray-500"
-                              >
-                                <span className="sr-only">Twitter</span>
-                                <svg
-                                  className="w-5 h-5"
-                                  aria-hidden="true"
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href={person.linkedinUrl}
-                                className="text-gray-400 hover:text-gray-500"
-                              >
-                                <span className="sr-only">LinkedIn</span>
-                                <svg
-                                  className="w-5 h-5"
-                                  aria-hidden="true"
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-                                    clipRule="evenodd"
-                                  />
-                                </svg>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
+              <div className="mt-8">
+                <div className="mt-6">
+                  <form
+                    onSubmit={handleSubmit(handleLogin)}
+                    className="space-y-6"
+                  >
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block font-medium text-violet-800 "
+                      >
+                        Email address
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          autoComplete="email"
+                          required
+                          {...register("email")}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
                       </div>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label
+                        htmlFor="password"
+                        className="block font-medium text-violet-800"
+                      >
+                        Password
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="password"
+                          name="password"
+                          type="password"
+                          autoComplete="current-password"
+                          required
+                          {...register("password")}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-end">
+                      <div className="text-sm justify">
+                        <a
+                          href="#"
+                          className="font-medium text-violet-600 hover:text-violet-500"
+                        >
+                          Forgot your password?
+                        </a>
+                      </div>
+                    </div>
+
+                    <div>
+                      <button
+                        type="submit"
+                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm font-medium text-white bg-violet-700 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
+                      >
+                        Sign in
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
+          )}
+          {registerUser && !loading && (
+            <div className="mx-auto w-full max-w-sm lg:w-96">
+              <div>
+                <img
+                  className="h-12 w-auto"
+                  src="/safl_logo.png"
+                  alt="Workflow"
+                />
+                <h2 className="mt-6 text-3xl font-extrabold text-violet-900">
+                  Register your account
+                </h2>
+                <p className="mt-2 text-sm text-violet-600">
+                  Or{" "}
+                  <a
+                    onClick={() => {
+                      setLoginUser(true);
+                      setRegisterUser(false);
+                    }}
+                    className="font-medium text-violet-600 hover:text-violet-500"
+                  >
+                    click here to login
+                  </a>
+                </p>
+              </div>
 
-          <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-            <svg
-              className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
-              viewBox="0 0 1155 678"
-            >
-              <path
-                fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)"
-                fillOpacity=".3"
-                d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
-              />
-              <defs>
-                <linearGradient
-                  id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc"
-                  x1="1155.49"
-                  x2="-78.208"
-                  y1=".177"
-                  y2="474.645"
-                  gradientUnits="userSpaceOnUse"
+              <div className="mt-8">
+                <div className="mt-6">
+                  <form
+                    onSubmit={handleSubmit(handleRegister)}
+                    className="space-y-6"
+                  >
+                    <div>
+                      <label
+                        htmlFor="teamName"
+                        className="block text-sm font-medium text-violet-700"
+                      >
+                        Team Name
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="teamName"
+                          name="teamName"
+                          type="text"
+                          required
+                          {...register("teamName")}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="teamLeaderName"
+                        className="block text-sm font-medium text-violet-700"
+                      >
+                        Team Leader Name
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="teamLeaderName"
+                          name="teamLeaderName"
+                          type="text"
+                          required
+                          {...register("teamLeaderName")}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="mobileNumber"
+                        className="block text-sm font-medium text-violet-700"
+                      >
+                        Mobile Number
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="mobileNumber"
+                          name="mobileNumber"
+                          type="tel"
+                          required
+                          {...register("mobileNumber")}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-violet-700"
+                      >
+                        Email address
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          autoComplete="email"
+                          required
+                          {...register("email")}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label
+                        htmlFor="password"
+                        className="block text-sm font-medium text-violet-700"
+                      >
+                        Password (min 6 characters)
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="password"
+                          name="password"
+                          type="password"
+                          min={6}
+                          autoComplete="current-password"
+                          required
+                          {...register("password")}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label
+                        htmlFor="confirm_password"
+                        className="block text-sm font-medium text-violet-700"
+                      >
+                        Confirm Password
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="confirm_password"
+                          name="confirm_password"
+                          type="password"
+                          min={6}
+                          autoComplete="current-password"
+                          required
+                          {...register("confirm_password")}
+                          className="appearance-none block w-full px-3 py-2 border border-violet-300 rounded-lg shadow-sm placeholder-violet-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <button
+                        type="submit"
+                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm font-medium text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          )}
+          {loading && (
+            <div className="flex justify-center items-center mx-auto w-full max-w-sm lg:w-96">
+              <div role="status">
+                <svg
+                  aria-hidden="true"
+                  className="inline w-8 h-8 mr-2 text-gray-200 animate-spin fill-purple-600"
+                  viewBox="0 0 100 101"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <stop stopColor="#9089FC" />
-                  <stop offset={1} stopColor="#FF80B5" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+                  <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill"
+                  />
+                </svg>
+                <span className="sr-only">Loading...</span>
+              </div>
+            </div>
+          )}
         </div>
-      </main>
-    </div>
+
+        <div className="hidden lg:block relative w-0 flex-1">
+          <img
+            className="absolute inset-0 h-full w-full object-cover"
+            src="/login-bg.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </>
   );
 }
