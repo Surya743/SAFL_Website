@@ -1,4 +1,4 @@
-export default function AdminRoomCards({ roomName }) {
+export default function AdminRoomCards({ roomNo, roomName }) {
   const urlParams = new URLSearchParams({ country: roomName }).toString();
   const game = "/admin/games?" + urlParams;
 
@@ -7,7 +7,7 @@ export default function AdminRoomCards({ roomName }) {
       <div className="grow">
         <div className="flex justify-center items-center">
           <div className="mb-1 text-xl font-medium text-purple-800">
-            {roomName[0].toUpperCase() + roomName.slice(1)} (F___)
+            {roomName[0].toUpperCase() + roomName.slice(1)} ({roomNo})
           </div>
         </div>
 
