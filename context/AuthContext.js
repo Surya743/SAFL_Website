@@ -41,6 +41,7 @@ export function AuthProvider({ children }) {
             currency: 1500,
             roomDetails: [
               {
+                roomNo: "F208",
                 roomName: "japan",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -96,6 +97,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "germany",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -144,6 +146,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "france",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -194,6 +197,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "india",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -243,6 +247,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "spain",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -252,7 +257,7 @@ export function AuthProvider({ children }) {
                 endTime: 0,
                 games: [
                   {
-                    name: "Nerf War",
+                    name: "Nerf Wars",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -291,6 +296,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
+                roomNo: "F208",
                 roomName: "korea",
                 roomCompletedStatus: false,
                 roomHealth: 0,

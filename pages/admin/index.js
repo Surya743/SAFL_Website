@@ -12,7 +12,7 @@ export default function AdminDashboard() {
     return (
       <>
         <div className="bg-violet-200 ">
-          <AdminNavbar/>
+          <AdminNavbar />
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <div>
               <h1 className="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
@@ -36,12 +36,12 @@ export default function AdminDashboard() {
           </div>
           <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              <AdminRoomCards roomName="japan" />
-              <AdminRoomCards roomName="germany" />
-              <AdminRoomCards roomName="korea" />
-              <AdminRoomCards roomName="spain" />
-              <AdminRoomCards roomName="france" />
-              <AdminRoomCards roomName="india" />
+              <AdminRoomCards roomNo="F208" roomName="japan" />
+              <AdminRoomCards roomNo="F208" roomName="germany" />
+              <AdminRoomCards roomNo="F208" roomName="korea" />
+              <AdminRoomCards roomNo="F208" roomName="spain" />
+              <AdminRoomCards roomNo="F208" roomName="france" />
+              <AdminRoomCards roomNo="F208" roomName="india" />
             </div>
           </div>
 

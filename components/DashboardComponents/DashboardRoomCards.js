@@ -1,5 +1,6 @@
 import Timer from "./DashboardCountUpTimer";
 export default function DashboardRoomCards({
+  roomNo,
   roomName,
   roomPoints,
   roomHealth,
@@ -17,7 +18,7 @@ export default function DashboardRoomCards({
       <div className="grow">
         <div className="flex justify-center items-center">
           <div className="mb-1 text-xl font-medium text-purple-800">
-            {roomName[0].toUpperCase() + roomName.slice(1)} (F___)
+            {roomName[0].toUpperCase() + roomName.slice(1)} ({roomNo})
           </div>
         </div>
 
