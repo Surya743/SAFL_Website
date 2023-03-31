@@ -176,16 +176,7 @@ export default function Login() {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-end">
-                      <div className="text-sm justify">
-                        <a
-                          href="#"
-                          className="font-medium text-violet-600 hover:text-violet-500"
-                        >
-                          Forgot your password?
-                        </a>
-                      </div>
-                    </div>
+                    
 
                     <div>
                       <button
