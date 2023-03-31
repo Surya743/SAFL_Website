@@ -143,6 +143,8 @@ export default function Modal({ open, setOpen, user, setAlert }) {
                           </label>
                           <input
                             id="points"
+                          type="number"
+
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
                             required
                             {...register("points")}
@@ -156,6 +158,7 @@ export default function Modal({ open, setOpen, user, setAlert }) {
                             Add Health
                           </label>
                           <input
+                          type="number"
                             id="health"
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
                             required
