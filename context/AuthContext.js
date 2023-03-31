@@ -250,7 +250,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
-                roomNo: "G207",
+                roomNo: "G206",
                 roomName: "spain",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -299,7 +299,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
-                roomNo: "G206",
+                roomNo: "F207",
                 roomName: "korea",
                 roomCompletedStatus: false,
                 roomHealth: 0,
