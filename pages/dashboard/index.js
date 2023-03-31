@@ -59,10 +59,7 @@ export default function DashboardRoom() {
           setRoomData(data.roomDetails);
           let totalPointstemp = data.totalPoints;
           let totalHealthtemp = data.totalHealth;
-          data.roomDetails.map((room) => {
-            totalPointstemp = totalPointstemp + room.roomPoints;
-            totalHealthtemp = totalHealthtemp + room.roomHealth;
-          });
+          
           setTotalPoints(totalPointstemp);
           setTotalHealth(totalHealthtemp);
 
