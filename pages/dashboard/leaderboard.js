@@ -13,6 +13,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useAuth } from "@/context/AuthContext";
 import NotLoggedIn from "@/components/Errors/NotLoggedIn";
 import Loading from "@/components/Errors/Loading";
+import AdminNavbar from "@/components/AdminComponents/AdminNavbar";
 
 export default function Leaderboard() {
   const { currentUser } = useAuth();
@@ -38,7 +39,11 @@ export default function Leaderboard() {
   if (currentUser && teams) {
     return (
       <>
-        <DashboardNavbar />
+      {currentUser.uid != process.env.NEXT_PUBLIC_ADMIN ?
+      <DashboardNavbar/> :
+      <AdminNavbar/>
+      }
+      
         <div className="px-4 sm:px-6 lg:px-8 bg-violet-200 h-screen">
           <div className="flex justify-center items-center pt-8 lg:py-8 md:py-4">
             <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
