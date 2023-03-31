@@ -44,7 +44,7 @@ export default function Leaderboard() {
       <AdminNavbar/>
       }
       
-        <div className="px-4 sm:px-6 lg:px-8 bg-violet-200 h-screen">
+        <div className="px-4 sm:px-6 lg:px-8 bg-violet-200 min-h-screen">
           <div className="flex justify-center items-center pt-8 lg:py-8 md:py-4">
             <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-500">
