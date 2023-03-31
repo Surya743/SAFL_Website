@@ -1,3 +1,4 @@
+import Timer from "./DashboardCountUpTimer";
 export default function DashboardStatusCard({
   totalPoints,
   totalHealth,
@@ -98,9 +99,18 @@ export default function DashboardStatusCard({
         <div className="mb-1 text-base font-medium text-purple-800">
           Total Time Taken:
           {/* {time != false ?millisToMinutesAndSeconds(time)  : } */}
-          {globalEnd == 0 &&
-          <Timer time={Date.now() - roomTime} />
+          {globalEnd == 0 && globalStart!=0 &&
+          <Timer time={Date.now() - globalStart} />
           
+          }
+          {globalStart == 0 && globalEnd == 0 &&
+          <>
+          <span>
+            {" "}
+            Game not started
+          </span>
+          </>
+
           }
           {globalEnd != 0 &&
           <>
