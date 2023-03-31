@@ -39,8 +39,8 @@ export function AuthProvider({ children }) {
             totalPoints: 1000,
             totalHealth: 1000,
             currency: 1500,
-            globalStart : 0,
-            globalEnd : 0,
+            globalStart: 0,
+            globalEnd: 0,
             roomDetails: [
               {
                 roomNo: "F208",
@@ -185,7 +185,7 @@ export function AuthProvider({ children }) {
                   },
                   {
                     bossGame: true,
-                    name: "Roulette",
+                    name: "Bluff",
                     health: 0,
                     points: 0,
                     completed: false,
