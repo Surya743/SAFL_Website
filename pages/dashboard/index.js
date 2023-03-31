@@ -21,6 +21,10 @@ export default function DashboardRoom() {
   const [totalGamesCount, setTotalGamesCount] = useState(0);
   const [totalCompletedGamesCount, setTotalCompletedGamesCount] = useState(0);
   const [roomCompletedGamesCount, setRoomCompletedGamesCount] = useState(0);
+  const [globalStart,setGlobalStart] = useState(0);
+  const [globalEnd,setGlobalEnd] = useState(0);
+
+
 
   const dataFetchedRef = useRef(false);
 
@@ -49,6 +53,8 @@ export default function DashboardRoom() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
+          setGlobalStart(data.globalStart)
+          setGlobalEnd(data.globalEnd)
           setTeamName(data.teamName);
           setRoomData(data.roomDetails);
           let totalPointstemp = data.totalPoints;
@@ -102,6 +108,9 @@ export default function DashboardRoom() {
               totalHealth={totalHealth}
               totalCompletedGamesCount={totalCompletedGamesCount}
               totalGamesCount={totalGamesCount}
+              globalStart ={globalStart}
+              globalEnd = {globalEnd}
+
             />
           </div>
 
