@@ -27,9 +27,14 @@ export default function Modal({ open, setOpen, user, setAlert }) {
         let gameCompleted = false;
         let totalGames = 0;
         let totalGamesCompleted = 0;
-
+        let totalRooms = 0;
+        let totalRoomsCompleted = 0;
 
         let temp = data.roomDetails.map((room) => {
+          totalRooms+=1
+          if(room.roomCompletedStatus == true){
+            totalRoomsCompleted+=1
+          }
           if (room.roomName == country) {
             room.roomPoints += parseInt(modalData.points);
             room.roomHealth += parseInt(modalData.health);
@@ -55,6 +60,7 @@ export default function Modal({ open, setOpen, user, setAlert }) {
             if(totalGamesCompleted == totalGames){
               room.endTime = Date.now()
               room.roomCompletedStatus = true
+              totalRoomsCompleted +=1
             }
           }
           return room;
@@ -63,12 +69,24 @@ export default function Modal({ open, setOpen, user, setAlert }) {
           parseInt(data.totalPoints) + parseInt(modalData.points);
         let totalHealth =
           parseInt(data.totalHealth) + parseInt(modalData.health);
+
+        if(totalRoomsCompleted == totalRooms){
+          await updateDoc(docRef, {
+            roomDetails: temp,
+            totalHealth : totalHealth,
+            totalPoints : totalPoints,
+            currency : totalPoints + (0.5 * totalHealth),
+            globalEnd : Date.now()
+          })
+        }
         await updateDoc(docRef, {
           roomDetails: temp,
           totalHealth : totalHealth,
           totalPoints : totalPoints,
           currency : totalPoints + (0.5 * totalHealth)
         })
+
+
         setAlert(gamePoints,gameHealth,gameCompleted)
         
 

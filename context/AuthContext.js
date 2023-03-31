@@ -39,6 +39,8 @@ export function AuthProvider({ children }) {
             totalPoints: 1000,
             totalHealth: 1000,
             currency: 1500,
+            globalStart : 0,
+            globalEnd : 0,
             roomDetails: [
               {
                 roomNo: "F208",

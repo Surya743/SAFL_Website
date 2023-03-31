@@ -28,6 +28,7 @@ export default function DashboardRoom() {
         if (room.roomName == roomNameParam) {
           room.roomStarted = true;
           room.startTime = Date.now();
+
         }
         return room;
       });
@@ -36,6 +37,7 @@ export default function DashboardRoom() {
 
       await updateDoc(docRef, {
         roomDetails: temp,
+        globalStart : Date.now()
       }).then((event) => {
         setStarted(true);
       });
