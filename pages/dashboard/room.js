@@ -28,7 +28,6 @@ export default function DashboardRoom() {
         if (room.roomName == roomNameParam) {
           room.roomStarted = true;
           room.startTime = Date.now();
-
         }
         return room;
       });
@@ -37,7 +36,7 @@ export default function DashboardRoom() {
 
       await updateDoc(docRef, {
         roomDetails: temp,
-        globalStart : Date.now()
+        globalStart: Date.now(),
       }).then((event) => {
         setStarted(true);
       });
@@ -87,21 +86,21 @@ export default function DashboardRoom() {
       teamName && (
         <>
           <div className="min-h-screen bg-violet-200 ">
-          
-
             <DashboardNavbar />
-            <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
-  <p class="font-bold">Alert</p>
-  <p>Updated Rooms</p>
-  <p>Japan F208</p>
-  <p>India F205</p>
-  <p>Spain G206</p>
-  <p>France G208</p>
+            {/* <div
+              class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4"
+              role="alert"
+            >
+              <p class="font-bold">Alert</p>
+              <p>Updated Rooms</p>
+              <p>Japan F208</p>
+              <p>India F205</p>
+              <p>Spain G206</p>
+              <p>France G208</p>
 
-  <p>Korea F207</p>
-  <p>Germany G205</p>
-
-</div>
+              <p>Korea F207</p>
+              <p>Germany G205</p>
+            </div> */}
             <div className="flex mx-8 my-8 lg:mt-20 lg:mx-20 justify-center">
               <div>
                 <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
@@ -124,7 +123,7 @@ export default function DashboardRoom() {
                       if (room.roomName == name) {
                         return (
                           <RoomStatusCard
-                            roomHealth={room.roomHealth}
+                            // roomHealth={room.roomHealth}
                             roomPoints={room.roomPoints}
                             completedGames={completedGamesCount}
                             roomGamesCount={roomGamesCount}

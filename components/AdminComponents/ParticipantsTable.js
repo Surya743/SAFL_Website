@@ -65,12 +65,12 @@ const ModalContent = () => {
                     >
                       Game Points
                     </th>
-                    <th
+                    {/* <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
                       Game Health
-                    </th>
+                    </th> */}
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
@@ -106,9 +106,9 @@ const ModalContent = () => {
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             {team.gamePoints}
                           </td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             {team.gameHealth}
-                          </td>
+                          </td> */}
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             {team.gameCompleted && <span>Completed</span>}
                             {!team.gameCompleted && <span>Pending</span>}

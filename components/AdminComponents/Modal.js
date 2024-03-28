@@ -31,9 +31,9 @@ export default function Modal({ open, setOpen, user, setAlert }) {
         let totalRoomsCompleted = 0;
 
         let temp = data.roomDetails.map((room) => {
-          totalRooms+=1
-          if(room.roomCompletedStatus == true){
-            totalRoomsCompleted+=1
+          totalRooms += 1;
+          if (room.roomCompletedStatus == true) {
+            totalRoomsCompleted += 1;
           }
           if (room.roomName == country) {
             room.roomPoints += parseInt(modalData.points);
@@ -47,20 +47,19 @@ export default function Modal({ open, setOpen, user, setAlert }) {
                   parseInt(game.health) + parseInt(modalData.health);
                 gameHealth = game.health;
                 game.completed = Boolean(modalData.completion);
-                gameCompleted = game.completed
-                
+                gameCompleted = game.completed;
               }
-              if(game.completed){
-                totalGamesCompleted+=1
+              if (game.completed) {
+                totalGamesCompleted += 1;
               }
-              totalGames+=1;
+              totalGames += 1;
               return game;
             });
-            console.log(totalGames,totalGamesCompleted)
-            if(totalGamesCompleted == totalGames){
-              room.endTime = Date.now()
-              room.roomCompletedStatus = true
-              totalRoomsCompleted +=1
+            console.log(totalGames, totalGamesCompleted);
+            if (totalGamesCompleted == totalGames) {
+              room.endTime = Date.now();
+              room.roomCompletedStatus = true;
+              totalRoomsCompleted += 1;
             }
           }
           return room;
@@ -70,26 +69,23 @@ export default function Modal({ open, setOpen, user, setAlert }) {
         let totalHealth =
           parseInt(data.totalHealth) + parseInt(modalData.health);
 
-        if(totalRoomsCompleted == totalRooms){
+        if (totalRoomsCompleted == totalRooms) {
           await updateDoc(docRef, {
             roomDetails: temp,
-            totalHealth : totalHealth,
-            totalPoints : totalPoints,
-            currency : totalPoints + (0.5 * totalHealth),
-            globalEnd : Date.now()
-          })
+            totalHealth: totalHealth,
+            totalPoints: totalPoints,
+            currency: totalPoints,
+            globalEnd: Date.now(),
+          });
         }
         await updateDoc(docRef, {
           roomDetails: temp,
-          totalHealth : totalHealth,
-          totalPoints : totalPoints,
-          currency : totalPoints + (0.5 * totalHealth)
-        })
+          totalHealth: totalHealth,
+          totalPoints: totalPoints,
+          currency: totalPoints,
+        });
 
-
-        setAlert(gamePoints,gameHealth,gameCompleted)
-        
-
+        setAlert(gamePoints, gameHealth, gameCompleted);
       }
     } catch (error) {
       console.log(error);
@@ -143,14 +139,14 @@ export default function Modal({ open, setOpen, user, setAlert }) {
                           </label>
                           <input
                             id="points"
-                          type="number"
+                            type="number"
                             defaultValue={0}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
                             required
                             {...register("points")}
                           />
                         </div>
-                        <div>
+                        {/* <div>
                           <label
                             htmlFor="health"
                             className="text-base font-semibold leading-6 text-purple-800"
@@ -166,7 +162,7 @@ export default function Modal({ open, setOpen, user, setAlert }) {
                             required
                             {...register("health")}
                           />
-                        </div>
+                        </div> */}
                         <label className="relative inline-flex items-center mr-5 cursor-pointer">
                           <input
                             type="checkbox"

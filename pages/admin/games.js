@@ -23,7 +23,7 @@ export default function Participants() {
         if (docSnap.exists()) {
           const data = docSnap.data();
           setRoomData(data.roomDetails);
-          // setRoomData(data)
+          console.log(roomData)
         }
       } catch (error) {
         console.log(error);
@@ -36,6 +36,7 @@ export default function Participants() {
   if (currentUser && currentUser.uid == process.env.NEXT_PUBLIC_ADMIN) {
     const router = useRouter();
     const { country } = router.query;
+    
     return (
       <>
         <div className="bg-violet-200 min-h-screen ">
@@ -52,6 +53,7 @@ export default function Participants() {
           </div>
           <div className="flex justify-center items-center pt-0 mx-4">
             {roomData.map((room) => {
+              console.log(room)
               if (room.roomName == country) {
                 return room.games.map((game) => {
                   if (game.bossGame == true)

@@ -1,7 +1,7 @@
 import Timer from "./DashboardCountUpTimer";
 export default function DashboardStatusCard({
   totalPoints,
-  totalHealth,
+  // totalHealth,
   totalCompletedGamesCount,
   totalGamesCount,
   globalStart,
@@ -66,7 +66,7 @@ export default function DashboardStatusCard({
         </div>
       </div>
 
-      <div className="flex gap-2 mt-8">
+      {/* <div className="flex gap-2 mt-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -78,7 +78,7 @@ export default function DashboardStatusCard({
           Total Health:
           <span className="text-fuchsia-600"> {totalHealth}</span>
         </div>
-      </div>
+      </div> */}
 
       <div className="flex gap-2 mt-8">
         <svg

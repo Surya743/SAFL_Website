@@ -3,10 +3,10 @@ export default function DashboardRoomCards({
   roomNo,
   roomName,
   roomPoints,
-  roomHealth,
   roomTime,
   roomStarted,
   roomCompleted,
+  // roomHealth,
   roomEndTime,
   roomGamesCount,
   roomCompletedGamesCount,
@@ -79,7 +79,7 @@ export default function DashboardRoomCards({
           </div>
         </div>
 
-        <div className="flex gap-2 mt-8">
+        {/* <div className="flex gap-2 mt-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
@@ -90,7 +90,7 @@ export default function DashboardRoomCards({
           <div className="mb-1 text-base font-medium text-purple-800">
             Health Awarded: {roomHealth}
           </div>
-        </div>
+        </div> */}
 
         <div className="flex gap-2 mt-8">
           <svg

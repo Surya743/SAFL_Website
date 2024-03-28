@@ -21,10 +21,8 @@ export default function DashboardRoom() {
   const [totalGamesCount, setTotalGamesCount] = useState(0);
   const [totalCompletedGamesCount, setTotalCompletedGamesCount] = useState(0);
   const [roomCompletedGamesCount, setRoomCompletedGamesCount] = useState(0);
-  const [globalStart,setGlobalStart] = useState(0);
-  const [globalEnd,setGlobalEnd] = useState(0);
-
-
+  const [globalStart, setGlobalStart] = useState(0);
+  const [globalEnd, setGlobalEnd] = useState(0);
 
   const dataFetchedRef = useRef(false);
 
@@ -53,13 +51,13 @@ export default function DashboardRoom() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          setGlobalStart(data.globalStart)
-          setGlobalEnd(data.globalEnd)
+          setGlobalStart(data.globalStart);
+          setGlobalEnd(data.globalEnd);
           setTeamName(data.teamName);
           setRoomData(data.roomDetails);
           let totalPointstemp = data.totalPoints;
           let totalHealthtemp = data.totalHealth;
-          
+
           setTotalPoints(totalPointstemp);
           setTotalHealth(totalHealthtemp);
 
@@ -85,18 +83,17 @@ export default function DashboardRoom() {
       <>
         <div className="bg-violet-200 ">
           <DashboardNavbar />
-          <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+          {/* <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
   <p class="font-bold">Alert</p>
   <p>Updated Rooms</p>
   <p>Japan F208</p>
   <p>India F205</p>
   <p>Spain G206</p>
   <p>France G208</p>
-
   <p>Korea F207</p>
   <p>Germany G205</p>
 
-</div>
+</div> */}
 
           <div className="flex mx-8 my-8 lg:mt-32 lg:mx-20 justify-center">
             <div>
@@ -115,12 +112,10 @@ export default function DashboardRoom() {
           <div className="flex justify-center items-center pt-8 mx-4">
             <DashboardStatusCard
               totalPoints={totalPoints}
-              totalHealth={totalHealth}
               totalCompletedGamesCount={totalCompletedGamesCount}
               totalGamesCount={totalGamesCount}
-              globalStart ={globalStart}
-              globalEnd = {globalEnd}
-
+              globalStart={globalStart}
+              globalEnd={globalEnd}
             />
           </div>
 
@@ -137,7 +132,7 @@ export default function DashboardRoom() {
                     roomNo={room.roomNo}
                     roomName={room.roomName}
                     roomPoints={room.roomPoints}
-                    roomHealth={room.roomHealth}
+                    // roomHealth={room.roomHealth}
                     roomTime={room.startTime}
                     roomStarted={room.roomStarted}
                     roomCompleted={room.roomCompletedStatus}

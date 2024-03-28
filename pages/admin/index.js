@@ -36,12 +36,12 @@ export default function AdminDashboard() {
           </div>
           <div className=" container px-4 md:mx-auto lg:mx-auto sm:mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              <AdminRoomCards roomNo="F208" roomName="japan" />
-              <AdminRoomCards roomNo="G205" roomName="germany" />
-              <AdminRoomCards roomNo="G206" roomName="korea" />
-              <AdminRoomCards roomNo="G207" roomName="spain" />
-              <AdminRoomCards roomNo="G208" roomName="france" />
-              <AdminRoomCards roomNo="F205" roomName="india" />
+              <AdminRoomCards roomNo="F208" roomName="Japan" />
+              <AdminRoomCards roomNo="G208" roomName="Germany" />
+              <AdminRoomCards roomNo="F207" roomName="Korea" />
+              <AdminRoomCards roomNo="F205" roomName="Spain" />
+              <AdminRoomCards roomNo="G207" roomName="France" />
+              <AdminRoomCards roomNo="G206" roomName="India" />
             </div>
           </div>
 

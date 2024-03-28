@@ -50,22 +50,22 @@ export default function AdminNavbar() {
           <a href="/dashboard/leaderboard" className="text-sm font-semibold leading-6 text-gray-900">
             Leaderboard
           </a>
-          <a href="/admin/games?country=japan" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/admin/games?country=Japan" className="text-sm font-semibold leading-6 text-gray-900">
             Japan
           </a>
-          <a href="/admin/games?country=germany" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/admin/games?country=Germany" className="text-sm font-semibold leading-6 text-gray-900">
             Germany
           </a>
-          <a href="/admin/games?country=spain" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/admin/games?country=Spain" className="text-sm font-semibold leading-6 text-gray-900">
             Spain
           </a>
-          <a href="/admin/games?country=france" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/admin/games?country=France" className="text-sm font-semibold leading-6 text-gray-900">
             France
           </a>
-          <a href="/admin/games?country=india" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/admin/games?country=India" className="text-sm font-semibold leading-6 text-gray-900">
             India
           </a>
-          <a href="/admin/games?country=korea" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/admin/games?country=Korea" className="text-sm font-semibold leading-6 text-gray-900">
             Korea
           </a>
         </Popover.Group>
@@ -115,37 +115,37 @@ export default function AdminNavbar() {
                   Leaderboard
                 </a>
                 <a
-                  href="/admin/games?country=japan"
+                  href="/admin/games?country=Japan"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Japan
                 </a>
                 <a
-                  href="/admin/games?country=germany"
+                  href="/admin/games?country=Germany"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Germany
                 </a>
                 <a
-                  href="/admin/games?country=spain"
+                  href="/admin/games?country=Spain"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Spain
                 </a>
                 <a
-                  href="/admin/games?country=france"
+                  href="/admin/games?country=France"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   France
                 </a>
                 <a
-                  href="/admin/games?country=india"
+                  href="/admin/games?country=India"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   India
                 </a>
                 <a
-                  href="/admin/games?country=korea"
+                  href="/admin/games?country=Korea"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Korea

@@ -29,7 +29,7 @@ export default function DashboardRoomBossCard(props) {
         </div>
       </div>
 
-      <div className="flex gap-2 mt-8">
+      {/* <div className="flex gap-2 mt-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -40,7 +40,7 @@ export default function DashboardRoomBossCard(props) {
         <div className="mb-1 text-base font-medium text-purple-800">
           Health Awarded: {props.details.health}
         </div>
-      </div>
+      </div> */}
 
       {isCompleted ? (
         <div className="flex gap-2 mt-8">

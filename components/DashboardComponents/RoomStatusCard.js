@@ -1,5 +1,5 @@
 export default function RoomStatusCard({
-  roomHealth,
+  // roomHealth,
   roomPoints,
   completedGames,
   roomGamesCount,
@@ -40,7 +40,7 @@ export default function RoomStatusCard({
         </div>
       </div>
 
-      <div className="flex gap-2 mt-8">
+      {/* <div className="flex gap-2 mt-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -51,7 +51,7 @@ export default function RoomStatusCard({
         <div className="mb-1 text-base font-medium text-purple-800">
           Total Health: {roomHealth}
         </div>
-      </div>
+      </div> */}
 
       <div className="flex justify-center pt-6">
         <a
