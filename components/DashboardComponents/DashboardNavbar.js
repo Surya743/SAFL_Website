@@ -115,37 +115,37 @@ export default function DashboardNavbar() {
                   Leaderboard
                 </a>
                 <a
-                  href="/dashboard/room?name=japan"
+                  href="/dashboard/room?name=Japan"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Japan
                 </a>
                 <a
-                  href="/dashboard/room?name=germany"
+                  href="/dashboard/room?name=Germany"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Germany
                 </a>
                 <a
-                  href="/dashboard/room?name=spain"
+                  href="/dashboard/room?name=Spain"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Spain
                 </a>
                 <a
-                  href="/dashboard/room?name=france"
+                  href="/dashboard/room?name=France"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   France
                 </a>
                 <a
-                  href="/dashboard/room?name=india"
+                  href="/dashboard/room?name=India"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   India
                 </a>
                 <a
-                  href="/dashboard/room?name=korea"
+                  href="/dashboard/room?name=Korea"
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Korea
