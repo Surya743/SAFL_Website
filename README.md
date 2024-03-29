@@ -1,5 +1,6 @@
 # SAFL's Around the World Website
 
+
 Sample env file
 ```env
 NEXT_PUBLIC_APIKEY = 
