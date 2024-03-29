@@ -29,19 +29,21 @@ export default function Modal({ open, setOpen, user, setAlert }) {
         let totalGamesCompleted = 0;
         let totalRooms = 0;
         let totalRoomsCompleted = 0;
-
+        let oldGamePoints = 0;
         let temp = data.roomDetails.map((room) => {
           totalRooms += 1;
           if (room.roomCompletedStatus == true) {
             totalRoomsCompleted += 1;
           }
           if (room.roomName == country) {
-            room.roomPoints += parseInt(modalData.points);
-            room.roomHealth += parseInt(modalData.health);
+           
             room.games.map((game) => {
               if (game.name == gameName) {
+                 room.roomPoints = room.roomPoints - game.points + parseInt(modalData.points);
+            room.roomHealth = room.roomHealth - game.health + parseInt(modalData.health);
+                oldGamePoints = game.points                
                 game.points =
-                  parseInt(game.points) + parseInt(modalData.points);
+                  parseInt(modalData.points);
                 gamePoints = game.points;
                 game.health =
                   parseInt(game.health) + parseInt(modalData.health);
@@ -65,7 +67,7 @@ export default function Modal({ open, setOpen, user, setAlert }) {
           return room;
         });
         let totalPoints =
-          parseInt(data.totalPoints) + parseInt(modalData.points);
+          parseInt(data.totalPoints) - oldGamePoints + parseInt(modalData.points);
         let totalHealth =
           parseInt(data.totalHealth) + parseInt(modalData.health);
 
@@ -135,7 +137,7 @@ export default function Modal({ open, setOpen, user, setAlert }) {
                             htmlFor="points"
                             className="text-base font-semibold leading-6 text-purple-800"
                           >
-                            Add Points
+                            Update Points
                           </label>
                           <input
                             id="points"
