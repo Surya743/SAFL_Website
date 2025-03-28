@@ -322,6 +322,7 @@ export function AuthProvider({ children }) {
                     completed: false,
                   },
                   {
+                    bossGame: true,
                     name: "The Final Identity",
                     health: 0,
                     points: 0,
