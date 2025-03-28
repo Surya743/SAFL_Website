@@ -7,7 +7,7 @@ export default function RoomParagraph({ roomName }) {
   useEffect(() => {
     async function description() {
       try {
-        const docRefDesc = doc(db, "descriptions", roomName);
+        const docRefDesc = doc(db, "descriptions", roomName.toLowerCase());
         const docSnapDesc = await getDoc(docRefDesc);
         if (docSnapDesc.exists()) {
           const data = docSnapDesc.data();

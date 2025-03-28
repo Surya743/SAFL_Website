@@ -1,21 +1,14 @@
 import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
-import {
-
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/router";
 
-
-
 export default function DashboardNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const {logout} = useAuth()
+  const { logout } = useAuth();
   const router = useRouter();
-
 
   return (
     <header className="bg-violet-200">
@@ -26,11 +19,7 @@ export default function DashboardNavbar() {
         <div className="flex lg:flex-1">
           <a href="/dashboard" className="-m-1.5 p-1.5">
             <span className="sr-only">SAFL</span>
-            <img
-              className="h-8 w-auto"
-              src="/safl_logo.png"
-              alt=""
-            />
+            <img className="h-8 w-auto" src="/safl_logo.png" alt="" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -44,37 +33,63 @@ export default function DashboardNavbar() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a href="/dashboard" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/dashboard"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Dashboard
           </a>
-          <a href="/dashboard/leaderboard" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/dashboard/leaderboard"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Leaderboard
           </a>
-          <a href="/dashboard/room?name=japan" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/dashboard/room?name=Japan"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Japan
           </a>
-          <a href="/dashboard/room?name=germany" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/dashboard/room?name=Germany"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Germany
           </a>
-          <a href="/dashboard/room?name=spain" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/dashboard/room?name=Spain"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Spain
           </a>
-          <a href="/dashboard/room?name=france" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/dashboard/room?name=France"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             France
           </a>
-          <a href="/dashboard/room?name=india" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/dashboard/room?name=India"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             India
           </a>
-          <a href="/dashboard/room?name=korea" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/dashboard/room?name=Korea"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Korea
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <button onClick={() => {
-            logout();
-            router.push("/")
-
-            }} className="text-sm font-semibold leading-6 text-gray-900">
+          <button
+            onClick={() => {
+              logout();
+              router.push("/");
+            }}
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Log Out <span aria-hidden="true">&rarr;</span>
           </button>
         </div>
@@ -90,11 +105,7 @@ export default function DashboardNavbar() {
           <div className="flex items-center justify-between">
             <a href="/dashboard" className="-m-1.5 p-1.5">
               <span className="sr-only">SAFL</span>
-              <img
-                className="h-8 w-auto"
-                src="/safl_logo.png"
-                alt=""
-              />
+              <img className="h-8 w-auto" src="/safl_logo.png" alt="" />
             </a>
             <button
               type="button"
@@ -153,10 +164,9 @@ export default function DashboardNavbar() {
               </div>
               <div className="py-6">
                 <button
-                onClick={() => {
-                  logout();
-                  router.push("/")
-      
+                  onClick={() => {
+                    logout();
+                    router.push("/");
                   }}
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >

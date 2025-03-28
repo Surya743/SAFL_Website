@@ -43,7 +43,7 @@ export function AuthProvider({ children }) {
             globalEnd: 0,
             roomDetails: [
               {
-                roomNo: "F208",
+                roomNo: "G206",
                 roomName: "Japan",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -54,38 +54,38 @@ export function AuthProvider({ children }) {
 
                 games: [
                   {
-                    name: "Incluesion",
+                    name: "Kitsune no Yaiba",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "The Crumbling",
+                    name: "Bomb Run",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "The Bar",
+                    name: "Konpira",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Make her spin",
+                    name: "Gacha",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Let it grip",
+                    name: "Beach Episode",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
                     bossGame: true,
-                    name: "Is it wrong to enter a dungeon?",
+                    name: "The Return of Fukushima",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -103,32 +103,32 @@ export function AuthProvider({ children }) {
                 endTime: 0,
                 games: [
                   {
-                    name: "Time Bound Traveler",
+                    name: "The Dictator's Map",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Laser-eyed Navigator",
+                    name: "Führer 101",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Let’s get wasted",
+                    name: "Blind brews",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Football Mania",
+                    name: "Crash to win",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
                     bossGame: true,
-                    name: "Serious Seduction",
+                    name: "Eva's Temptation",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -136,7 +136,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
-                roomNo: "G208",
+                roomNo: "G104",
                 roomName: "France",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -148,7 +148,7 @@ export function AuthProvider({ children }) {
 
                 games: [
                   {
-                    name: "Speed Uno",
+                    name: "Wheel of fortune",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -166,13 +166,13 @@ export function AuthProvider({ children }) {
                     completed: false,
                   },
                   {
-                    name: "Stack the Cups",
+                    name: "Darts",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Split and Steal",
+                    name: "Lucky number",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -187,7 +187,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
-                roomNo: "G206",
+                roomNo: "G106",
                 roomName: "India",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -199,50 +199,49 @@ export function AuthProvider({ children }) {
 
                 games: [
                   {
-                    name: "Thala for a Reason",
+                    name: "Math Trivia",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Financial Affairs",
+                    name: "Space Explorer",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Baburao ka style",
+                    name: "Sing it",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Rocket (Wo)man",
+                    name: "Rhymes of the Past",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Indian Da Vinci",
+                    name: "Speedster",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Shankarabharanam",
+                    name: "Checkmate",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "The Real Thala",
+                    name: "Guess the price",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    bossGame: true,
-                    name: "Shivaji Worship",
+                    name: "Gambler",
                     health: 0,
                     points: 0,
                     completed: false,
@@ -250,7 +249,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
-                roomNo: "F205",
+                roomNo: "F207",
                 roomName: "Spain",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -278,12 +277,6 @@ export function AuthProvider({ children }) {
                     completed: false,
                   },
                   {
-                    name: "House of Cards",
-                    health: 0,
-                    points: 0,
-                    completed: false,
-                  },
-                  {
                     name: "Flip trip",
                     health: 0,
                     points: 0,
@@ -305,7 +298,7 @@ export function AuthProvider({ children }) {
                 ],
               },
               {
-                roomNo: "F207",
+                roomNo: "G208",
                 roomName: "Korea",
                 roomCompletedStatus: false,
                 roomHealth: 0,
@@ -317,32 +310,43 @@ export function AuthProvider({ children }) {
 
                 games: [
                   {
-                    name: "Elephant Spin",
+                    name: "Dakji",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Relay game",
+                    name: "Balloon Stack Race",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Stone game",
+                    name: "The Final Identity",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    name: "Ddakji",
+                    name: "Cup or Die",
                     health: 0,
                     points: 0,
                     completed: false,
                   },
                   {
-                    bossGame: true,
-                    name: "Gesture Game",
+                    name: "Marble Run: Death Route",
+                    health: 0,
+                    points: 0,
+                    completed: false,
+                  },
+                  {
+                    name: "Beast Blitz",
+                    health: 0,
+                    points: 0,
+                    completed: false,
+                  },
+                  {
+                    name: "K-Scene Showdown",
                     health: 0,
                     points: 0,
                     completed: false,
